@@ -4672,22 +4672,29 @@ body.force-terminal-fallback .chaos-card {
 
 .matrix-layer {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  height: 100svh;
-  min-height: 100svh;
-  height: 100dvh;
-  min-height: 100dvh;
+  inset: 0 auto auto 0;
+  display: block;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none;
+  max-height: none;
+  transform: none;
+  background: transparent;
+  contain: strict;
   pointer-events: none;
   z-index: 48;
   opacity: 0;
   transition: opacity 260ms ease;
 }
 
+@supports (height: 100dvh) {
+  .matrix-layer {
+    height: 100dvh !important;
+  }
+}
+
 body.matrix-mode .matrix-layer {
-  opacity: 0.5;
+  opacity: 0.68;
 }
 
 body.matrix-mode .panel,
