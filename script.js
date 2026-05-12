@@ -422,6 +422,7 @@ const TERMINAL_COMMANDS = [
   "ls", "pwd", "uname", "nepal", "date", "time", "pulse", "echo",
 ];
 let launches = 0;
+let lastOpsEvent = "Console ready";
 let adToBsConverter = null;
 let startPersonaQuiz = null;
 let currentTheme = "neo";
@@ -2308,7 +2309,6 @@ consoleMatrixBtn?.addEventListener("click", () => toggleMatrixMode());
 const REPO_BATCH_SIZE = 6;
 let repoStore = [];
 let repoRenderCount = 0;
-let lastOpsEvent = "Console ready";
 
 function derivePulseState(count) {
   if (count <= 0) return "Cold start";
