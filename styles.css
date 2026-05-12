@@ -1381,6 +1381,143 @@ section {
   contain-intrinsic-size: 280px;
 }
 
+body[data-page="home"] .skew-left,
+body[data-page="home"] .skew-right {
+  transform: none;
+}
+
+body[data-page="home"] .hero,
+body[data-page="home"] .panel {
+  border-radius: 14px;
+}
+
+body[data-page="home"] .hero {
+  padding: 0.96rem;
+  background:
+    radial-gradient(320px 120px at 0% 0%, rgba(79, 150, 255, 0.16), transparent 70%),
+    radial-gradient(220px 120px at 100% 100%, rgba(255, 162, 94, 0.1), transparent 74%),
+    linear-gradient(180deg, rgba(9, 15, 28, 0.94), rgba(8, 14, 24, 0.92));
+}
+
+body[data-page="home"] .panel {
+  padding: 0.82rem;
+  background: linear-gradient(180deg, rgba(9, 15, 28, 0.92), rgba(8, 13, 24, 0.9));
+}
+
+body[data-page="home"] .hero-motif {
+  width: min(36vw, 168px);
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.18;
+  animation: none;
+}
+
+body[data-page="home"] .panel h2::after {
+  opacity: 0.34;
+  animation: none;
+  background: linear-gradient(90deg, rgba(112, 178, 255, 0.45), rgba(255, 182, 122, 0.12), transparent);
+}
+
+body[data-page="home"] .section-rail {
+  gap: 0.24rem;
+  padding: 0.32rem 0.5rem;
+  min-height: 3rem;
+  background: rgba(6, 11, 22, 0.56);
+  border-color: rgba(109, 146, 219, 0.18);
+  box-shadow: 0 8px 18px rgba(4, 10, 20, 0.18);
+}
+
+body[data-page="home"] .section-rail .rail-row {
+  gap: 0.3rem;
+}
+
+body[data-page="home"] .section-rail a {
+  padding: 0.28rem 0.5rem;
+  min-height: 1.68rem;
+  background: rgba(7, 13, 24, 0.54);
+  font-size: 0.69rem;
+}
+
+body[data-page="home"] .chips {
+  margin-top: 0.38rem;
+  gap: 0.3rem;
+}
+
+body[data-page="home"] .chips span {
+  padding: 0.18rem 0.44rem;
+  background: rgba(8, 14, 29, 0.58);
+  font-size: 0.71rem;
+}
+
+body[data-page="home"] .hero-actions,
+body[data-page="home"] .control-row {
+  gap: 0.36rem;
+}
+
+body[data-page="home"] .avatar-card {
+  min-height: 198px;
+  background: linear-gradient(180deg, rgba(9, 15, 29, 0.88), rgba(13, 22, 38, 0.82));
+}
+
+body[data-page="home"] .avatar-glow {
+  width: 164px;
+  height: 164px;
+  opacity: 0.78;
+}
+
+body[data-page="home"] .chaos-grid {
+  gap: 0.48rem;
+}
+
+body[data-page="home"] .ai-grid .c1,
+body[data-page="home"] .ai-grid .c2,
+body[data-page="home"] .ai-grid .c3,
+body[data-page="home"] .ai-grid .c4 {
+  grid-column: span 3;
+  transform: none;
+}
+
+body[data-page="home"] .chaos-card,
+body[data-page="home"] .favorite-card,
+body[data-page="home"] .spotlight-card,
+body[data-page="home"] .repo-card,
+body[data-page="home"] .ops-card,
+body[data-page="home"] .repo-stat {
+  border-radius: 10px;
+  background: rgba(8, 14, 27, 0.74);
+}
+
+body[data-page="home"] .chaos-card::before,
+body[data-page="home"] .spotlight-card::before {
+  opacity: 0.55;
+}
+
+body[data-page="home"] .terminal,
+body[data-page="home"] .mini-terminal,
+body[data-page="home"] .quiz-board {
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(4, 8, 18, 0.26);
+}
+
+body[data-page="home"] .favorite-card:hover,
+body[data-page="home"] .spotlight-card:hover,
+body[data-page="home"] .repo-card:hover {
+  box-shadow: 0 10px 22px rgba(5, 13, 28, 0.18);
+}
+
+body[data-page="home"] .avatar-card.tilt,
+body[data-page="home"] .chaos-card.tilt,
+body[data-page="home"] .favorite-card.tilt,
+body[data-page="home"] .spotlight-card.tilt,
+body[data-page="home"] .repo-card.tilt,
+body[data-page="home"] .contact-item.tilt {
+  transform: none !important;
+}
+
+body[data-page="home"] .mini-terminal-screen {
+  height: 214px;
+}
+
 .hero:target,
 .panel:target {
   outline: 1px solid rgba(148, 212, 255, 0.6);
@@ -5046,4 +5183,297 @@ body[data-theme="material3"] nav {
 body[data-theme="material3"] nav a {
   min-width: 5.2rem;
   justify-content: center;
+}
+
+/* Final coherence layer: calmer surfaces, theme-driven colors, less visual clutter. */
+html,
+body {
+  background-color: var(--bg-0);
+}
+
+@supports (color: color-mix(in srgb, white, black)) {
+  html,
+  body {
+    background:
+      radial-gradient(900px 320px at 14% -10%, color-mix(in srgb, var(--blue) 18%, transparent), transparent 66%),
+      radial-gradient(720px 280px at 92% -6%, color-mix(in srgb, var(--orange) 14%, transparent), transparent 68%),
+      linear-gradient(160deg, var(--bg-0), var(--bg-1) 48%, var(--bg-2));
+  }
+
+  .site-header,
+  .section-rail,
+  .hero,
+  .panel,
+  .chaos-card,
+  .favorite-card,
+  .fact-card,
+  .glass-card,
+  .repo-card,
+  .ops-card,
+  .repo-stat,
+  .pulse-node,
+  .contact-item,
+  .terminal,
+  .mini-terminal,
+  .mini-terminal-screen,
+  .quiz-board,
+  .command-shell,
+  .cli-window {
+    border-color: color-mix(in srgb, var(--border) 76%, transparent);
+  }
+
+  .site-header,
+  .section-rail {
+    background: color-mix(in srgb, var(--header) 88%, transparent);
+  }
+
+  .hero,
+  .panel,
+  .chaos-card,
+  .favorite-card,
+  .fact-card,
+  .glass-card,
+  .repo-card,
+  .ops-card,
+  .repo-stat,
+  .pulse-node,
+  .contact-item,
+  .terminal,
+  .mini-terminal,
+  .mini-terminal-screen,
+  .quiz-board,
+  .command-shell,
+  .cli-window {
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, rgba(255, 255, 255, 0.035)), var(--card));
+  }
+
+  .section-rail a.active,
+  nav a:hover,
+  nav a.active {
+    background: color-mix(in srgb, var(--blue) 16%, transparent);
+    border-color: color-mix(in srgb, var(--blue) 38%, var(--border));
+  }
+
+  .chips span,
+  .repo-chip,
+  .terminal-chip,
+  .terminal-tag,
+  .mini-terminal-status,
+  .status-pill {
+    background: color-mix(in srgb, var(--blue) 12%, transparent);
+    border-color: color-mix(in srgb, var(--border) 72%, transparent);
+  }
+}
+
+.noise {
+  opacity: 0.045 !important;
+}
+
+#starfield {
+  opacity: 0.24;
+}
+
+body {
+  padding-bottom: calc(4.6rem + env(safe-area-inset-bottom));
+}
+
+.site-header {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.hero,
+.panel {
+  border-radius: 14px;
+  backdrop-filter: none;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+
+.panel {
+  padding: clamp(0.9rem, 1.7vw, 1.2rem);
+}
+
+.hero {
+  background:
+    radial-gradient(420px 150px at 0% 0%, rgba(255, 255, 255, 0.035), transparent 72%),
+    var(--card);
+}
+
+.hero::before,
+.hero::after,
+.panel::before,
+.panel::after,
+.chaos-card::before,
+.favorite-card::before,
+.fact-card::before,
+.glass-card::before,
+.repo-card::before,
+.contact-item::before,
+.mini-terminal::before,
+.quiz-board::before,
+.command-shell::before {
+  animation: none !important;
+  opacity: 0.1;
+}
+
+.skew-left,
+.skew-right {
+  transform: none;
+}
+
+.panel h2 {
+  margin-bottom: 0.72rem;
+  font-size: clamp(1.05rem, 2vw, 1.48rem);
+  letter-spacing: -0.02em;
+}
+
+.panel h2::after {
+  width: 2.2rem;
+  opacity: 0.72;
+}
+
+.btn,
+.egg-btn,
+.theme-top-select,
+.theme-cycle-btn,
+.section-rail,
+.section-rail a,
+nav a,
+.chips span,
+.repo-chip,
+.terminal-chip,
+.terminal-tag,
+.mini-terminal-status,
+.status-pill {
+  border-radius: 999px;
+}
+
+.section-rail {
+  padding: 0.28rem 0.4rem;
+  gap: 0.22rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+body[data-page="home"] .section-rail {
+  gap: 0.22rem;
+  min-height: 3rem;
+  padding: 0.32rem 0.46rem;
+}
+
+body[data-page="home"] .section-rail .rail-row {
+  gap: 0.22rem;
+}
+
+.section-rail a {
+  border-color: transparent;
+  background: transparent;
+  padding: 0.34rem 0.62rem;
+  transform: none;
+}
+
+.section-rail a::before {
+  display: none;
+}
+
+.section-rail a.active {
+  transform: none;
+}
+
+#cli-snapshot {
+  margin-top: 0.55rem;
+}
+
+#cli-snapshot .cli-block {
+  display: grid;
+  gap: 0.16rem;
+  white-space: normal;
+  padding: 0.74rem 0.82rem;
+  font-size: 0.84rem;
+  line-height: 1.38;
+}
+
+#cli-snapshot .cli-gap {
+  height: 0.28rem;
+}
+
+.chaos-card,
+.favorite-card,
+.fact-card,
+.glass-card,
+.repo-card,
+.ops-card,
+.repo-stat,
+.pulse-node,
+.contact-item,
+.terminal,
+.mini-terminal,
+.mini-terminal-screen,
+.quiz-board,
+.command-shell,
+.cli-window {
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+.chaos-card:hover,
+.favorite-card:hover,
+.fact-card:hover,
+.glass-card:hover,
+.repo-card:hover,
+.contact-item:hover,
+.btn:hover,
+.egg-btn:hover {
+  transform: translateY(-2px);
+}
+
+body[data-page="home"] .hero-grid,
+body[data-page="home"] .console-layout,
+body[data-page="home"] .spotlight-layout,
+body[data-page="home"] .ai-grid,
+body[data-page="home"] .culture-grid,
+body[data-page="home"] .terminal-layout,
+body[data-page="home"] .quiz-layout,
+body[data-page="home"] .github-layout {
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+@media (max-width: 720px) {
+  :root {
+    --page-gutter: 0.82rem;
+  }
+
+  .site-header {
+    top: 0.42rem;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0.42rem;
+  }
+
+  .header-tools {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .theme-top-select {
+    min-width: 0;
+    max-width: 13rem;
+  }
+
+  .hero,
+  .panel {
+    border-radius: 12px;
+  }
+
+  .panel {
+    padding: 0.86rem;
+  }
+
+  .section-rail {
+    max-width: calc(100vw - 0.75rem);
+  }
+
+  .section-rail a {
+    padding: 0.33rem 0.54rem;
+    font-size: 0.68rem;
+  }
 }

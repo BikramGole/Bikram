@@ -41,17 +41,12 @@
         const params = new URLSearchParams(window.location.search);
         const urlTheme = params.get("theme");
         const savedTheme = window.localStorage.getItem(themeKey);
-        const selected = validThemes.has(savedTheme) ? savedTheme : (validThemes.has(urlTheme) ? urlTheme : "mint");
+        const selected = validThemes.has(urlTheme) ? urlTheme : (validThemes.has(savedTheme) ? savedTheme : "mint");
         if (selected) {
           document.documentElement.dataset.theme = selected;
           document.body.dataset.theme = selected;
           if (selected !== savedTheme) {
             window.localStorage.setItem(themeKey, selected);
-          }
-          if (validThemes.has(savedTheme) && selected !== urlTheme) {
-            const url = new URL(window.location.href);
-            url.searchParams.set("theme", selected);
-            window.history.replaceState(null, "", url.toString());
           }
         }
       } catch (error) {
@@ -88,6 +83,7 @@
         <option value="paper">Paper Link</option>
         <option value="blackflag">Black Flag Uprising</option>
       </select>
+      <button id="theme-cycle-btn" class="theme-cycle-btn" type="button" aria-label="Cycle theme">↻</button>
     </div>
   </header>
   <div class="scroll-progress" aria-hidden="true">
@@ -124,7 +120,7 @@
     </section>
 
     <section id="direct-links" class="panel reveal delay-1 skew-right">
-      <h2>Direct Links 🔗</h2>
+      <h2>Direct Links</h2>
       <div class="contact-list tilt-zone">
         <a class="contact-item tilt" href="mailto:Bikramgole.genius@keemail.me">
           <h3 class="contact-title">

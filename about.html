@@ -41,17 +41,12 @@
         const params = new URLSearchParams(window.location.search);
         const urlTheme = params.get("theme");
         const savedTheme = window.localStorage.getItem(themeKey);
-        const selected = validThemes.has(savedTheme) ? savedTheme : (validThemes.has(urlTheme) ? urlTheme : "mint");
+        const selected = validThemes.has(urlTheme) ? urlTheme : (validThemes.has(savedTheme) ? savedTheme : "mint");
         if (selected) {
           document.documentElement.dataset.theme = selected;
           document.body.dataset.theme = selected;
           if (selected !== savedTheme) {
             window.localStorage.setItem(themeKey, selected);
-          }
-          if (validThemes.has(savedTheme) && selected !== urlTheme) {
-            const url = new URL(window.location.href);
-            url.searchParams.set("theme", selected);
-            window.history.replaceState(null, "", url.toString());
           }
         }
       } catch (error) {
@@ -88,6 +83,7 @@
         <option value="paper">Paper Link</option>
         <option value="blackflag">Black Flag Uprising</option>
       </select>
+      <button id="theme-cycle-btn" class="theme-cycle-btn" type="button" aria-label="Cycle theme">↻</button>
     </div>
   </header>
   <div class="scroll-progress" aria-hidden="true">
@@ -127,7 +123,7 @@
     </section>
 
     <section id="identity-snapshot" class="panel reveal delay-1 skew-right">
-      <h2>Identity Snapshot 🧬</h2>
+      <h2>Identity Snapshot</h2>
       <div class="about-grid tilt-zone">
         <article class="glass-card tilt"><h3>Name</h3><p>Bikram Gole</p></article>
         <article class="glass-card tilt"><h3>Age</h3><p>15</p></article>
@@ -140,7 +136,7 @@
     </section>
 
     <section id="strengths" class="panel reveal delay-2 skew-left">
-      <h2>Strengths ⚡</h2>
+      <h2>Strengths</h2>
       <div class="fact-grid tilt-zone">
         <article class="fact-card tilt"><h3>Communication</h3><p>Great English speaker.</p></article>
         <article class="fact-card tilt"><h3>Debate</h3><p>Can debate almost any topic.</p></article>
@@ -150,7 +146,7 @@
     </section>
 
     <section id="influence-stack" class="panel reveal delay-3 skew-right">
-      <h2>AI + Influence Stack 🤖</h2>
+      <h2>AI + Influence Stack</h2>
       <div class="favorite-grid tilt-zone">
         <article class="favorite-card tilt"><h3>YouTube</h3><p>AI Explained, Matt Wolfe, Luke Smith, Mental Outlaw, Linus Tech Tips, IN-Depth Story, HowToMen, The Linux Experiment, Fireship</p></article>
         <article class="favorite-card tilt"><h3>People</h3><p>Sam Altman, Dario Amodei, Elon Musk, Linus Torvalds, Terry A. Davis</p></article>

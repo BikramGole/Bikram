@@ -435,30 +435,22 @@ let pulseCoreFlash = null;
 let pulseFallbackTimeout = 0;
 const typewriterTokens = new WeakMap();
 const heroTaglineVariants = [
-  "Aura Farmer // Chaotic Fun 🚀",
-  "Neo Build Mode // Signal > Noise",
-  "Debate + Code + Ship ⚡",
-  "Open Source + AI + Linux 🐧",
-  "Chaos Energy // Clean Execution",
-  "From Gongabu to Global Ideas 🌍",
-  "Future AI Engineer // In Progress",
-  "Keyboard Warrior // Builder Mindset",
+  "Aura Farmer // Builder Mode",
+  "Signal > Noise",
+  "Open Source // Linux // AI",
+  "Debate. Build. Repeat.",
+  "Future AI Engineer",
+  "Minimal UI, Max Aura",
+  "Terminal Mindset",
+  "Gongabu to Global",
 ];
 const aiConstellationTaglines = [
-  "Aura Farmer",
+  "Current Orbit",
+  "Build Focus",
   "Signal > Noise",
-  "Debate Mode Always Ready",
-  "Build Fast, Think Deep",
-  "Linux Brain, Space Heart",
-  "Chaos Energy, Clean Execution",
-  "Ship Weird Ideas",
   "Open Source Mindset",
   "AI Tools, Real Impact",
-  "Gongabu to Global",
-  "Minimal UI, Max Aura",
-  "Neo Stack Activated",
-  "Focus: Learn, Build, Debate",
-  "Future AI Engineer Loading",
+  "Future AI Engineer",
   "Curiosity Over Comfort",
   "Mission: Make It Work",
 ];
@@ -1017,7 +1009,7 @@ function initPenguinDateBadge() {
   }, 60 * 1000);
 }
 
-function applyTheme(theme, notify = false) {
+function applyTheme(theme, notify = false, syncUrl = notify || Boolean(getThemeFromUrl())) {
   const selected = THEME_OPTIONS.includes(theme) ? theme : "neo";
   currentTheme = selected;
   document.documentElement.dataset.theme = selected;
@@ -1051,7 +1043,9 @@ function applyTheme(theme, notify = false) {
     // Ignore storage errors.
   }
 
-  setThemeInUrl(selected);
+  if (syncUrl) {
+    setThemeInUrl(selected);
+  }
   updateInternalLinks();
   resizeCanvas();
   updateOpsDeck(notify ? `Theme set to ${selected}` : lastOpsEvent);
@@ -1063,13 +1057,8 @@ function initThemeSwitcher() {
   try {
     const urlTheme = getThemeFromUrl();
     const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    savedTheme = storedTheme || urlTheme || "mint";
-    if (!storedTheme && !urlTheme) {
-      window.localStorage.setItem(THEME_STORAGE_KEY, savedTheme);
-    }
-    if (!storedTheme && urlTheme) {
-      window.localStorage.setItem(THEME_STORAGE_KEY, urlTheme);
-    }
+    savedTheme = urlTheme || storedTheme || "mint";
+    window.localStorage.setItem(THEME_STORAGE_KEY, savedTheme);
   } catch (error) {
     savedTheme = "mint";
   }
@@ -1078,8 +1067,9 @@ function initThemeSwitcher() {
   window.addEventListener("pageshow", () => {
     let latestTheme = "mint";
     try {
+      const urlTheme = getThemeFromUrl();
       const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-      latestTheme = storedTheme || getThemeFromUrl() || "mint";
+      latestTheme = urlTheme || storedTheme || "mint";
     } catch (error) {
       latestTheme = "mint";
     }
@@ -1386,7 +1376,7 @@ function runTerminalCommand(rawCommand) {
   } else if (action === "youtube") {
     appendTerminalLine("YouTube: AI Explained, Matt Wolfe, Luke Smith, Mental Outlaw, Linus Tech Tips, IN-Depth Story, HowToMen, The Linux Experiment, Fireship.");
   } else if (action === "launch") {
-    launchBtn?.click();
+    launchPulse();
     appendTerminalLine("Launch pulse fired.");
   } else if (action === "insight") {
     quoteBtn?.click();
@@ -1931,7 +1921,7 @@ function updateInternalLinks() {
 }
 
 function triggerAction(actionKey) {
-  if (actionKey === "launch") launchBtn?.click();
+  if (actionKey === "launch") launchPulse();
   if (actionKey === "insight") quoteBtn?.click();
   if (actionKey === "quiz") startPersonaQuiz?.();
 }
@@ -2288,28 +2278,31 @@ if (quoteBtn && quoteOutput) {
   });
 }
 
-if (launchBtn && quoteOutput && signalCount) {
-  launchBtn.addEventListener("click", (event) => {
-    triggerHeroPulse();
-    launches += 1;
-    signalCount.textContent = String(launches);
-    quoteOutput.textContent = `> Aura pulse ${launches} launched from Mars.`;
-    triggerPulseBackdrop(event?.clientX, event?.clientY);
-    playPulseSound(launches);
-    triggerPenguinPowerUp();
-    spawnSparks(24);
-    if (currentTheme === "blackflag") {
-      triggerBlackflagBlast(event?.clientX || window.innerWidth * 0.5, event?.clientY || window.innerHeight * 0.5);
-    }
-    applyPulseMilestone(launches);
-    if (launches >= 20 && !document.body.classList.contains("matrix-mode")) {
-      startMatrixRain();
-    }
-    updateOpsDeck(`Pulse ${launches} launched`);
-  });
+function launchPulse(event = null) {
+  if (!quoteOutput || !signalCount) return;
+  triggerHeroPulse();
+  launches += 1;
+  signalCount.textContent = String(launches);
+  quoteOutput.textContent = `> Aura pulse ${launches} launched from Mars.`;
+  triggerPulseBackdrop(event?.clientX, event?.clientY);
+  playPulseSound(launches);
+  triggerPenguinPowerUp();
+  spawnSparks(24);
+  if (currentTheme === "blackflag") {
+    triggerBlackflagBlast(event?.clientX || window.innerWidth * 0.5, event?.clientY || window.innerHeight * 0.5);
+  }
+  applyPulseMilestone(launches);
+  if (launches >= 20 && !document.body.classList.contains("matrix-mode")) {
+    startMatrixRain();
+  }
+  updateOpsDeck(`Pulse ${launches} launched`);
 }
 
-consoleLaunchBtn?.addEventListener("click", () => launchBtn?.click());
+if (launchBtn) {
+  launchBtn.addEventListener("click", launchPulse);
+}
+
+consoleLaunchBtn?.addEventListener("click", launchPulse);
 consoleMatrixBtn?.addEventListener("click", () => toggleMatrixMode());
 
 const REPO_BATCH_SIZE = 6;

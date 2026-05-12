@@ -59,17 +59,12 @@
         const params = new URLSearchParams(window.location.search);
         const urlTheme = params.get("theme");
         const savedTheme = window.localStorage.getItem(themeKey);
-        const selected = validThemes.has(savedTheme) ? savedTheme : (validThemes.has(urlTheme) ? urlTheme : "mint");
+        const selected = validThemes.has(urlTheme) ? urlTheme : (validThemes.has(savedTheme) ? savedTheme : "mint");
         if (selected) {
           document.documentElement.dataset.theme = selected;
           document.body.dataset.theme = selected;
           if (selected !== savedTheme) {
             window.localStorage.setItem(themeKey, selected);
-          }
-          if (validThemes.has(savedTheme) && selected !== urlTheme) {
-            const url = new URL(window.location.href);
-            url.searchParams.set("theme", selected);
-            window.history.replaceState(null, "", url.toString());
           }
         }
       } catch (error) {
@@ -149,7 +144,7 @@
       </svg>
       <div class="hero-grid">
         <div>
-          <p id="hero-tagline" class="tag">Aura Farmer // Chaotic Fun 🚀</p>
+          <p id="hero-tagline" class="tag">Aura Farmer // Builder Mode</p>
           <div class="hero-name-row">
             <h1 id="hero-name" data-name="Bikram Gole">Bikram Gole</h1>
             <button id="name-speak" class="name-speak" type="button" aria-label="Play name pronunciation" title="Hear my name">
@@ -161,19 +156,16 @@
             </button>
           </div>
           <span class="name-underline" aria-hidden="true"></span>
-          <p id="hero-status" class="status-line" aria-live="polite">Debater mode always ready ⚔️</p>
+          <p id="hero-status" class="status-line" aria-live="polite">Debater mode always ready.</p>
           <div class="chips">
             <span>AI</span>
             <span>Open Source</span>
-            <span>Technology</span>
             <span>Linux</span>
-            <span>Self Improvement</span>
           </div>
           <div class="hero-actions">
-            <a class="btn primary" href="about.html">Full Profile 🧠</a>
-            <a class="btn ghost" href="contact.html">Contact</a>
+            <a class="btn primary" href="about.html">About</a>
             <a class="btn ghost" href="https://github.com/DevXtechnic" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <button id="launch-btn" class="btn ghost" type="button">Launch Pulse 🌌</button>
+            <a class="btn ghost" href="contact.html">Contact</a>
             <button id="palette-open" class="btn ghost" type="button">Ctrl/🐧 + K</button>
           </div>
         </div>
@@ -249,11 +241,11 @@
     </section>
 
     <section id="mission-console" class="panel reveal delay-1 skew-right">
-      <h2>Mission Console 🛰️</h2>
-      <p>Click controls. Watch the page mutate. The deck below reads live state from the page.</p>
+      <h2>Mission Console</h2>
+      <p>Pulse controls and live site state.</p>
       <div class="control-row">
-        <button id="console-launch-btn" class="btn ghost" type="button">Launch Pulse 🌌</button>
-        <button id="quote-btn" class="btn primary" type="button">Drop Insight 💡</button>
+        <button id="console-launch-btn" class="btn ghost" type="button">Launch Pulse</button>
+        <button id="quote-btn" class="btn primary" type="button">Drop Insight</button>
         <button id="console-matrix-btn" class="btn ghost" type="button">Toggle Matrix</button>
       </div>
       <div class="ops-grid" aria-label="mission status deck">
@@ -293,16 +285,14 @@
         </article>
       </div>
       <div id="quote-output" class="terminal" role="status" aria-live="polite">Console ready.</div>
-      <p class="signal-board">Signals launched: <strong id="signal-count">0</strong></p>
-      <p class="signal-board">Pulse chain: 5 = Elon Warp, 10 = Chill Music, 15 = ISTJ Grid, 20 = Matrix Rain.</p>
-      <p class="signal-board">Drop Insight resets the chain.</p>
+      <p class="signal-board">Signals launched: <strong id="signal-count">0</strong> · Milestones: 5 Warp, 10 Chill, 15 Grid, 20 Matrix.</p>
     </section>
 
     <section id="project-spotlight" class="panel reveal delay-2 skew-left">
       <div class="section-head">
         <div>
           <h2>Project Spotlight</h2>
-          <p class="subtitle">Curated builds I am evolving right now.</p>
+          <p class="subtitle">Three projects that best represent how I build.</p>
         </div>
         <a class="btn ghost" href="https://github.com/DevXtechnic" target="_blank" rel="noopener noreferrer">View GitHub</a>
       </div>
@@ -355,8 +345,8 @@
     <section id="ai-constellation" class="panel reveal delay-2 skew-right">
       <div class="section-head">
         <div>
-          <h2>AI Constellation 🤖</h2>
-          <p class="subtitle">The people, feeds, and build ideas currently steering the ship.</p>
+          <h2>AI Constellation</h2>
+          <p class="subtitle">The people and ideas currently shaping how I think.</p>
         </div>
       </div>
       <div class="chaos-grid ai-grid">
@@ -402,29 +392,11 @@
             <li>Making personal branding feel technical, not corporate</li>
           </ul>
         </article>
-        <article class="chaos-card tilt c5">
-          <p class="chaos-kicker">Recent Upgrades</p>
-          <h3>Site Changelog</h3>
-          <ul class="chaos-list">
-            <li>Spotlight cards now explain why each repo matters</li>
-            <li>Culture section now scans like cards, not a wall of names</li>
-            <li>Terminal now understands project-aware commands</li>
-          </ul>
-        </article>
-        <article class="chaos-card tilt c6">
-          <p class="chaos-kicker">Next Move</p>
-          <h3>What Gets Sharper Next</h3>
-          <ul class="chaos-list">
-            <li>Smarter terminal flows and repo shortcuts</li>
-            <li>Higher-end motion around scroll and hover states</li>
-            <li>A more premium “live updates” feeling across the page</li>
-          </ul>
-        </article>
       </div>
     </section>
 
     <section id="culture-brain" class="panel reveal delay-3 skew-left">
-      <h2>Culture + Brain Fuel 📚</h2>
+      <h2>Culture + Brain Fuel</h2>
       <div class="favorite-grid tilt-zone">
         <article class="favorite-card tilt">
           <h3>Books</h3>
@@ -481,8 +453,8 @@
     </section>
 
     <section id="neo-terminal" class="panel reveal delay-3 skew-right">
-      <h2>Neo Terminal ⚡</h2>
-      <p>Type commands and control the page like a mini shell.</p>
+      <h2>Neo Terminal</h2>
+      <p>A real mini shell for the site.</p>
       <div class="mini-terminal">
         <div class="mini-terminal-head">
           <p class="omp-row omp-row-top">
@@ -509,14 +481,14 @@
     </section>
 
     <section id="persona-quiz" class="panel reveal delay-3 skew-left">
-      <h2>Persona Quiz Game 🧩</h2>
+      <h2>Persona Quiz Game</h2>
       <p>Test if people really know my vibe. Questions are based on my actual persona.</p>
       <div class="quiz-board">
         <p id="quiz-progress" class="quiz-meta">Ready to start the quiz.</p>
         <h3 id="quiz-question" class="quiz-question">Hit start and prove your Neo-level awareness.</h3>
         <div id="quiz-options" class="quiz-options" role="group" aria-label="quiz answers"></div>
         <div class="quiz-controls">
-          <button id="quiz-start" class="btn primary" type="button">Start Quiz 🚀</button>
+          <button id="quiz-start" class="btn primary" type="button">Start Quiz</button>
           <button id="quiz-reset" class="btn ghost" type="button">Reset Quiz</button>
         </div>
         <p id="quiz-score" class="quiz-score">Score: 0/0</p>
@@ -524,8 +496,8 @@
     </section>
 
     <section id="github-live" class="panel reveal delay-3 skew-right">
-      <h2>Live GitHub 💻</h2>
-      <p>Auto-fetched from <a href="https://github.com/DevXtechnic" target="_blank" rel="noopener noreferrer">github.com/DevXtechnic</a>.</p>
+      <h2>Live GitHub</h2>
+      <p>Live repo feed from <a href="https://github.com/DevXtechnic" target="_blank" rel="noopener noreferrer">github.com/DevXtechnic</a>.</p>
       <p id="repo-meta-line" class="repo-meta-line">Loading repo stats...</p>
       <div id="repo-overview" class="repo-overview" aria-live="polite">
         <article class="repo-stat">
