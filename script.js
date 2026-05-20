@@ -721,7 +721,7 @@ const personaQuizQuestions = [
   { question: "In Black Flag theme, the hero gun appears on which side of title?", options: ["Left", "Right", "Both sides", "It is hidden"], answer: 0 },
   { question: "Which mode label replaced the old Libertarian theme?", options: ["Paper Link", "Neo Blue", "Black Flag Uprising", "Blood Moon"], answer: 2 },
   { question: "What vibe best matches this site?", options: ["Corporate dashboard", "Chaotic fun", "News portal", "Minimal blog"], answer: 1 },
-  { question: "Which email is marked as Primary in Contact?", options: ["Develope.genius@gmail.com", "Bikramgole.genius@keemail.me", "neo@matrix.com", "devx@proton.me"], answer: 1 },
+  { question: "Which email is marked as Primary in Contact?", options: ["Developer.genius@gmail.com", "Bikramgole.genius@keemail.me", "neo@matrix.com", "devx@proton.me"], answer: 1 },
   { question: "What does the quiz do when current pool runs out?", options: ["Auto-download more", "Stops and asks reset/refresh", "Repeats previous 10", "Crashes intentionally"], answer: 1 },
   { question: "Which page describes Identity Snapshot?", options: ["Home", "Contact", "About", "All pages"], answer: 2 },
   { question: "Which section title includes the word Console?", options: ["Mission Console", "Open Channel", "Identity Snapshot", "Live GitHub"], answer: 0 },
