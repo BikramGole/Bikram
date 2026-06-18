@@ -5686,23 +5686,24 @@ body[data-page="home"] .github-layout {
   }
 
   .name-speak {
-    width: 22px;
-    height: 22px;
-    right: -0.2rem;
-    top: -0.6rem;
-    transform: translate(0, -0.3em) rotate(-8deg) scale(1);
+    width: 32px;
+    height: 32px;
+    right: -0.1rem;
+    top: -0.45rem;
+    transform: translate(0.15em, -0.15em) rotate(-8deg) scale(1);
+    border-radius: 8px;
   }
 
   .name-speak.ready {
-    transform: translate(0, -0.5em) rotate(-8deg) scale(1);
+    transform: translate(0.15em, -0.35em) rotate(-8deg) scale(1);
   }
 
   .name-speak:hover {
-    transform: translate(0, -0.6em) rotate(-8deg) scale(1.05);
+    transform: translate(0.15em, -0.45em) rotate(-8deg) scale(1.05);
   }
 
   .name-speak:active {
-    transform: translate(0, -0.45em) rotate(-8deg) scale(0.98);
+    transform: translate(0.15em, -0.3em) rotate(-8deg) scale(0.98);
   }
 
   #command-input,
