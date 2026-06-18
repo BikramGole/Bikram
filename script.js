@@ -1874,134 +1874,43 @@ function initCliSnapshotTypewriter() {
 
 function initNamePronounce() {
   if (!nameSpeakBtn) return;
-  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
-    nameSpeakBtn.disabled = true;
-    nameSpeakBtn.setAttribute("aria-disabled", "true");
-    nameSpeakBtn.title = "Speech not supported on this device.";
-    return;
-  }
-
-  const synth = window.speechSynthesis;
-  let currentUtterance = null;
-  let cachedVoices = [];
-  let fallbackTimer = null;
-
-  const syncVoices = () => {
-    cachedVoices = synth.getVoices?.() || [];
-  };
-
-  syncVoices();
-  if (typeof synth.addEventListener === "function") {
-    synth.addEventListener("voiceschanged", syncVoices);
-  }
-
-  const pickVoice = () => {
-    if (!cachedVoices.length) return null;
-    const normalized = cachedVoices.map((voice) => ({
-      voice,
-      lang: voice.lang?.toLowerCase() || "",
-      name: voice.name?.toLowerCase() || "",
-    }));
-    return (
-      normalized.find((item) => item.lang === "en-in" || item.name.includes("india"))?.voice ||
-      normalized.find((item) => item.lang === "hi-in" || item.name.includes("hindi"))?.voice ||
-      normalized.find((item) => item.lang === "en-gb")?.voice ||
-      normalized.find((item) => item.lang === "en-us")?.voice ||
-      normalized.find((item) => item.lang.startsWith("en"))?.voice ||
-      null
-    );
-  };
+  const audio = new Audio("bikramgole.wav");
+  audio.preload = "auto";
 
   const setSpeakingState = (isSpeaking) => {
     nameSpeakBtn.classList.toggle("speaking", isSpeaking);
     nameSpeakBtn.setAttribute("aria-pressed", isSpeaking ? "true" : "false");
   };
 
-  const clearFallbackTimer = () => {
-    if (fallbackTimer) {
-      window.clearTimeout(fallbackTimer);
-      fallbackTimer = null;
-    }
-  };
-
   const stopSpeech = () => {
-    clearFallbackTimer();
-    if (synth.speaking || synth.pending) {
-      synth.cancel();
-    }
-    currentUtterance = null;
+    audio.pause();
+    audio.currentTime = 0;
     setSpeakingState(false);
+    nameSpeakBtn.title = "Hear my name";
   };
 
-  const primeSpeech = () => {
-    syncVoices();
-    if (synth.paused) {
-      try {
-        synth.resume();
-      } catch (error) {
-        // ignore
-      }
-    }
-    return cachedVoices.length > 0;
+  audio.onplay = () => {
+    setSpeakingState(true);
+    nameSpeakBtn.title = "Speaking name";
   };
-
-  const speakWithVoice = (voice = null) => {
-    const text = heroName?.dataset.name || heroName?.textContent || "Bikram Gole";
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = voice?.lang || "en-IN";
-    utterance.rate = 0.82;
-    utterance.pitch = 0.9;
-    utterance.volume = 1;
-    if (voice) utterance.voice = voice;
-    utterance.onstart = () => {
-      clearFallbackTimer();
-      setSpeakingState(true);
-      nameSpeakBtn.title = "Speaking name";
-    };
-    utterance.onend = () => {
-      currentUtterance = null;
-      setSpeakingState(false);
-      nameSpeakBtn.title = "Hear my name";
-    };
-    utterance.onerror = () => {
-      currentUtterance = null;
-      setSpeakingState(false);
-      nameSpeakBtn.title = "Speech failed on this browser.";
-    };
-    currentUtterance = utterance;
-    synth.speak(utterance);
+  audio.onended = () => {
+    setSpeakingState(false);
+    nameSpeakBtn.title = "Hear my name";
   };
-
-  const attemptSpeak = () => {
-    stopSpeech();
-    primeSpeech();
-
-    const preferredVoice = pickVoice();
-    speakWithVoice(preferredVoice);
-
-    fallbackTimer = window.setTimeout(() => {
-      if (synth.speaking || synth.pending || currentUtterance === null) return;
-      stopSpeech();
-      primeSpeech();
-      speakWithVoice(pickVoice());
-    }, 900);
+  audio.onerror = () => {
+    setSpeakingState(false);
+    nameSpeakBtn.title = "Speech failed on this browser.";
   };
 
   nameSpeakBtn.addEventListener("click", () => {
-    if (synth.speaking || synth.pending) {
+    if (!audio.paused) {
       stopSpeech();
       return;
     }
-    attemptSpeak();
-  });
-
-  nameSpeakBtn.addEventListener("pointerdown", () => {
-    primeSpeech();
-  });
-
-  window.addEventListener("pagehide", stopSpeech);
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopSpeech();
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+      nameSpeakBtn.title = "Speech failed on this browser.";
+    });
   });
 }
 
