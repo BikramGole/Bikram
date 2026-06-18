@@ -1493,7 +1493,7 @@ function runTerminalCommand(rawCommand) {
     appendTerminalLine("Projects:");
     appendTerminalLine("> ytdaily - automation and workflow experiments");
     appendTerminalLine("> cava - Hyprland Cava Underlay");
-    appendTerminalLine("> prompt - Fish prompt polish");
+    appendTerminalLine("> KinaHub - full-stack GitHub repo explorer");
   } else if (action === "now") {
     appendTerminalLine("Now orbiting: useful AI, cleaner terminal UX, Linux-native aesthetics, sharper project storytelling.");
   } else if (action === "buildlog") {
@@ -1503,18 +1503,18 @@ function runTerminalCommand(rawCommand) {
     appendTerminalLine("> terminal now has project-aware commands");
   } else if (action === "repo") {
     if (!argLower) {
-      appendTerminalLine("Use: repo ytdaily | repo cava | repo prompt", "warn");
+      appendTerminalLine("Use: repo ytdaily | repo cava | repo kinahub", "warn");
     } else if (argLower === "ytdaily") {
       window.open("https://github.com/DevXtechnic/Ytdaily", "_blank", "noopener,noreferrer");
       appendTerminalLine("Opened Ytdaily.");
     } else if (argLower === "cava" || argLower === "hyprland-cava-underlay") {
       window.open("https://github.com/DevXtechnic/hyprland-cava-underlay", "_blank", "noopener,noreferrer");
       appendTerminalLine("Opened Hyprland Cava Underlay.");
-    } else if (argLower === "prompt" || argLower === "fish-prompt") {
-      window.open("https://github.com/DevXtechnic/fish-prompt", "_blank", "noopener,noreferrer");
-      appendTerminalLine("Opened Fish Prompt.");
+    } else if (argLower === "kinahub" || argLower === "kina-hub") {
+      window.open("https://github.com/DevXtechnic/KinaHub", "_blank", "noopener,noreferrer");
+      appendTerminalLine("Opened KinaHub.");
     } else {
-      appendTerminalLine("Unknown repo. Use: ytdaily, cava, prompt.", "warn");
+      appendTerminalLine("Unknown repo. Use: ytdaily, cava, kinahub.", "warn");
     }
   } else if (action === "crypto") {
     appendTerminalLine("Crypto: BTC, Ethereum, Monero, Solana.");
