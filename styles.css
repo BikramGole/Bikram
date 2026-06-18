@@ -5773,3 +5773,7 @@ body[data-page="home"] .github-layout {
   box-shadow: 0 0 10px 4px var(--clean-glow-cyan), 0 0 24px 6px var(--blue);
   transform: translate(-50%, -50%);
 }
+
+@media (max-width: 768px) {
+  #page-mascot { display: none !important; }
+}
