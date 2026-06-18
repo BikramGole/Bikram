@@ -3214,15 +3214,12 @@ body[data-theme="zen"] .avatar-card .zen-avatar {
 }
 
 .avatar-photo {
-  width: 130px;
-  height: 150px;
-  border-radius: 8px;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 3;
-  position: relative;
-  margin-left: 8px;
-  border: 2px solid var(--border);
-  box-shadow: 0 0 18px var(--clean-glow-cyan);
 }
 
 body[data-theme="material3"] .avatar-card .avatar-photo,
