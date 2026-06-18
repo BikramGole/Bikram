@@ -10,6 +10,15 @@ let scrollProgressTicking = false;
 const backToTopBtn = document.getElementById("back-to-top");
 let backToTopTicking = false;
 
+function getAge() {
+  const birthday = new Date("2010-07-07");
+  const today = new Date();
+  let age = today.getFullYear() - birthday.getFullYear();
+  const m = today.getMonth() - birthday.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) age--;
+  return age;
+}
+
 function updateScrollProgress() {
   if (!scrollProgressBar) return;
   const doc = document.documentElement;
@@ -1461,7 +1470,7 @@ function runTerminalCommand(rawCommand) {
   } else if (action === "stack" || action === "skills") {
     appendTerminalLine("Stack: Python, C/C++, Linux, AI tools, open source.");
   } else if (action === "age") {
-    appendTerminalLine("Age: 15");
+    appendTerminalLine(`Age: ${getAge()}`);
   } else if (action === "location") {
     appendTerminalLine("Location: Gongabu, KTM, Nepal.");
   } else if (action === "school") {
@@ -1996,6 +2005,11 @@ function initNamePronounce() {
   });
 }
 
+function initAgeDisplay() {
+  const el = document.getElementById("age-display");
+  if (el) el.textContent = getAge();
+}
+
 function initFooterLineTypewriter() {
   if (!pageFooterLine) return;
   if (page === "about") {
@@ -2392,6 +2406,7 @@ initTerminalFontFallbackMode();
 initMiniTerminal();
 initCommandPalette();
 initPersonaQuiz();
+initAgeDisplay();
 initAiConstellationTagline();
 focusTerminalIfNeeded();
 
