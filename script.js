@@ -3050,4 +3050,3 @@ function resetPulseChain() {
 }
 
 document.getElementById("funk-toggle")?.addEventListener("click", toggleFunkAudio);
-

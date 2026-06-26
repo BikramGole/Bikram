@@ -4,8 +4,5 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.54.0"
-  },
-  "dependencies": {
-    "@sentry/browser": "^10.62.0"
   }
 }
