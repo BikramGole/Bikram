@@ -26,6 +26,16 @@
   <link rel="apple-touch-icon" href="favicon.svg" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="about.html" />
+  <script>
+    window.sentryOnLoad = function () {
+      Sentry.init({
+        tracesSampleRate: 1.0,
+        replaysSessionSampleRate: 0.1,
+        replaysOnErrorSampleRate: 1.0,
+      });
+    };
+  </script>
+  <script src="https://js-de.sentry-cdn.com/e29c497783848f45ff6e398a878829ae.min.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
