@@ -32,3 +32,16 @@ jobs:
             implement a fix, and open a pull request with the changes.
             If the issue lacks details, look at recent Sentry errors or check the codebase
             for related issues.
+
+      - name: Enable auto-merge on created PR
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh issue view ${{ github.event.issue.number }} --json closedByPRs --jq '.closedByPRs[-1].number' 2>/dev/null || echo "")
+          if [ -n "$PR_NUMBER" ] && [ "$PR_NUMBER" != "null" ]; then
+            gh pr merge --auto --squash "$PR_NUMBER" --subject "Auto-fix: $(gh issue view ${{ github.event.issue.number }} --json title --jq '.title' 2>/dev/null || echo 'fix')"
+            echo "Auto-merge enabled on PR #$PR_NUMBER"
+          else
+            echo "No PR found to auto-merge"
+          fi
