@@ -95,7 +95,7 @@ jobs:
             --title "Auto-fix: ${{ github.event.issue.title }}" \
             --body "$BODY")
           PR_NUMBER=$(echo "$PR_URL" | grep -oP '\d+$')
-          gh pr merge --auto --squash "$PR_NUMBER" --subject "Auto-fix: ${{ github.event.issue.title }}"
+          gh pr merge --auto --squash "$PR_NUMBER"
 
       - name: Close issue after PR merges
         if: always()
