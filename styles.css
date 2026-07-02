@@ -3474,6 +3474,81 @@ body[data-theme="zen"] .avatar-card .avatar-photo {
   letter-spacing: 0.02em;
 }
 
+.panel-inner {
+  margin-top: 1.2rem;
+  padding-top: 0.8rem;
+}
+
+.panel-inner h3 {
+  font-size: clamp(18px, 2.5vw, 24px);
+  margin-bottom: 0.1rem;
+}
+
+.panel-inner .subtitle {
+  margin-top: 0.1rem;
+  font-size: 0.78rem;
+}
+
+.contrib-graph {
+  margin-top: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.contrib-loading {
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 0.8rem 0;
+  text-align: center;
+}
+
+.contrib-svg {
+  display: block;
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.contrib-error {
+  color: var(--orange);
+  font-size: 0.82rem;
+  padding: 0.6rem 0;
+  text-align: center;
+}
+
+.contrib-error a {
+  color: var(--blue-2);
+}
+
+.contrib-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.contrib-legend-label {
+  margin-right: auto;
+}
+
+.contrib-legend-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+.contrib-legend-swatch.l0 { background: var(--border); opacity: 0.25; }
+.contrib-legend-swatch.l1 { background: var(--blue); opacity: 0.3; }
+.contrib-legend-swatch.l2 { background: var(--blue); opacity: 0.55; }
+.contrib-legend-swatch.l3 { background: var(--blue); opacity: 0.75; }
+.contrib-legend-swatch.l4 { background: var(--blue-2); }
+
 .repo-overview {
   margin-top: 0.48rem;
   display: grid;
