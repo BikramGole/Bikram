@@ -3467,6 +3467,12 @@ body[data-theme="zen"] .avatar-card .avatar-photo {
   grid-template-columns: repeat(3, 1fr);
 }
 
+@media (max-width: 760px) {
+  .spotlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .repo-grid {
   min-height: 160px;
 }
