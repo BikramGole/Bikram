@@ -11,7 +11,7 @@ const backToTopBtn = document.getElementById("back-to-top");
 let backToTopTicking = false;
 
 function getAge() {
-  const birthday = new Date("2010-07-07");
+  const birthday = new Date("2009-07-07");
   const today = new Date();
   let age = today.getFullYear() - birthday.getFullYear();
   const m = today.getMonth() - birthday.getMonth();
