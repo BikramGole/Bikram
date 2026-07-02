@@ -1440,7 +1440,7 @@ function autocompleteTerminalInput(rawValue) {
   return rawValue;
 }
 
-function runTerminalCommand(rawCommand) {
+async function runTerminalCommand(rawCommand) {
   const command = rawCommand.trim();
   if (!command) return;
 
@@ -1585,7 +1585,21 @@ function runTerminalCommand(rawCommand) {
   } else if (action === "uname") {
     appendTerminalLine("Arch Linux + Hyprland");
   } else if (action === "nepal") {
-    appendTerminalLine("Timezone: Asia/Kathmandu | Base: Gongabu, KTM, Nepal");
+    const BS_MONTH_NAMES = ["Baisakh","Jestha","Ashadh","Shrawan","Bhadra","Ashwin","Kartik","Mangsir","Poush","Magh","Falgun","Chaitra"];
+    try {
+      const parts = new Intl.DateTimeFormat("en-US", { timeZone: NEPAL_TIMEZONE, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+      const adStr = `${parts.find(p=>p.type==="year").value}-${parts.find(p=>p.type==="month").value}-${parts.find(p=>p.type==="day").value}`;
+      let bsLabel = "";
+      const mod = await import(BS_CONVERTER_URL);
+      if (typeof mod.ADtoBS === "function") {
+        const bs = mod.ADtoBS(adStr);
+        const parsed = bs && typeof bs === "object" && "day" in bs ? bs : (() => { const m = String(bs).match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/); return m ? { year: m[1], month: m[2], day: m[3] } : null; })();
+        if (parsed) bsLabel = ` | BS: ${BS_MONTH_NAMES[Number(parsed.month)-1]} ${parsed.day}, ${parsed.year}`;
+      }
+      appendTerminalLine(`Timezone: Asia/Kathmandu | Base: Gongabu, KTM, Nepal${bsLabel}`);
+    } catch {
+      appendTerminalLine("Timezone: Asia/Kathmandu | Base: Gongabu, KTM, Nepal");
+    }
   } else if (action === "date" || action === "time") {
     appendTerminalLine(new Date().toLocaleString("en-US"));
   } else if (action === "pulse") {

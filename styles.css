@@ -3463,6 +3463,10 @@ body[data-theme="zen"] .avatar-card .avatar-photo {
   gap: 0.42rem;
 }
 
+.spotlight-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .repo-grid {
   min-height: 160px;
 }
