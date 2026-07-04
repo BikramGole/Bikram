@@ -3737,6 +3737,17 @@ body[data-theme="paper"] .skeleton-line {
   box-shadow: 0 0 12px rgba(162, 141, 255, 0.35);
 }
 
+.spotlight-logo {
+  position: absolute;
+  top: 0.58rem;
+  right: 0.58rem;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 4px;
+  z-index: 2;
+}
+
 .spotlight-card .spotlight-link {
   color: var(--blue-2);
   font-weight: 600;
