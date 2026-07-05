@@ -3,6 +3,9 @@
     "test:e2e": "playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.0"
+    "@playwright/test": "^1.54.0",
+    "csso": "^5.0.5",
+    "html-minifier": "^4.0.0",
+    "terser": "^5.48.0"
   }
 }
