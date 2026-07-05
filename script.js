@@ -77,22 +77,7 @@ const railSections = sectionRailLinks
 let activeRailId = null;
 
 if (sectionRail) {
-  const updateRailOverflow = () => {
-    sectionRail.classList.toggle("rail-scrollable", sectionRail.scrollWidth > sectionRail.clientWidth + 1);
-  };
-  updateRailOverflow();
-  window.addEventListener("resize", updateRailOverflow);
-  sectionRail.addEventListener("scroll", updateRailOverflow, { passive: true });
-  sectionRail.addEventListener(
-    "wheel",
-    (event) => {
-      if (!sectionRail.classList.contains("rail-scrollable")) return;
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-      sectionRail.scrollLeft += event.deltaY;
-      event.preventDefault();
-    },
-    { passive: false }
-  );
+  // No overflow/wheel logic needed — single-row icon rail stays visible
 }
 
 function setActiveRail(id) {

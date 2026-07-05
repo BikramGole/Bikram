@@ -116,19 +116,21 @@
     <span class="scroll-progress-bar"></span>
   </div>
   <nav class="section-rail" aria-label="Section navigator">
-    <div class="rail-row">
-      <a href="#hero-zone" data-section="hero-zone"><span class="rail-label">Hero</span></a>
-      <a href="#cli-snapshot" data-section="cli-snapshot"><span class="rail-label">Snapshot</span></a>
-      <a href="#mission-console" data-section="mission-console"><span class="rail-label">Console</span></a>
-      <a href="#project-spotlight" data-section="project-spotlight"><span class="rail-label">Spotlight</span></a>
-      <a href="#ai-constellation" data-section="ai-constellation"><span class="rail-label">AI Stack</span></a>
-    </div>
-    <div class="rail-row">
-      <a href="#culture-brain" data-section="culture-brain"><span class="rail-label">Culture</span></a>
-      <a href="#neo-terminal" data-section="neo-terminal"><span class="rail-label">Terminal</span></a>
-      <a href="#persona-quiz" data-section="persona-quiz"><span class="rail-label">Quiz</span></a>
-      <a href="#github-live" data-section="github-live"><span class="rail-label">GitHub</span></a>
-    </div>
+    <a href="#hero-zone" data-section="hero-zone" aria-label="Hero">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+    <a href="#project-spotlight" data-section="project-spotlight" aria-label="Spotlight">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </a>
+    <a href="#mission-console" data-section="mission-console" aria-label="Console">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </a>
+    <a href="#persona-quiz" data-section="persona-quiz" aria-label="Quiz">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg>
+    </a>
+    <a href="#github-live" data-section="github-live" aria-label="GitHub">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
   </nav>
   <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
     <span aria-hidden="true">↑</span>
@@ -282,117 +284,74 @@
     </section>
 
     <section id="project-spotlight" class="panel reveal delay-2 skew-left">
-      <div class="section-head">
-        <div>
-          <h2>Project Spotlight</h2>
-          <p class="subtitle">Projects that best represent how I build.</p>
-        </div>
-        <a class="btn ghost" href="https://github.com/DevXtechnic" target="_blank" rel="noopener noreferrer">View GitHub</a>
-      </div>
-      <div class="spotlight-grid tilt-zone">
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <p class="spotlight-kicker">Workflow Lab</p>
+      <p class="spotlight-label">PROJECT SPOTLIGHT</p>
+      <div class="spotlight-grid">
+        <article class="spotlight-card">
           <h3>Ytdaily</h3>
           <p>Python-powered YouTube automation engine — monitors channels, downloads in up to 4K with parallel threads, strips sponsors via SponsorBlock, and runs silently as a systemd service.</p>
-          <p class="spotlight-meta">Why it matters: this is the kind of tool-first thinking I want to bring into AI engineering.</p>
-          <div class="chips">
-            <span>Automation</span>
-            <span>Workflow</span>
-            <span>Scripts</span>
-          </div>
-          <p class="spotlight-stat">Mood: useful over flashy</p>
-          <a class="spotlight-link" href="https://github.com/DevXtechnic/Ytdaily" target="_blank" rel="noopener noreferrer">Open repo →</a>
+          <a class="spotlight-btn" href="https://github.com/DevXtechnic/Ytdaily" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            VIEW REPO
+          </a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <p class="spotlight-kicker">Visual Linux</p>
+        <article class="spotlight-card">
           <h3>Hyprland Cava Underlay</h3>
           <p>Hyprland visuals fused with an audio-reactive Cava underlay for a desktop that feels alive.</p>
-          <p class="spotlight-meta">Why it matters: it shows I care about systems, aesthetics, and how software feels in daily use.</p>
-          <div class="chips">
-            <span>Linux</span>
-            <span>Hyprland</span>
-            <span>Audio</span>
-          </div>
-          <p class="spotlight-stat">Mood: ricing with signal</p>
-          <a class="spotlight-link" href="https://github.com/DevXtechnic/hyprland-cava-underlay" target="_blank" rel="noopener noreferrer">See build →</a>
+          <a class="spotlight-btn" href="https://github.com/DevXtechnic/hyprland-cava-underlay" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            VIEW REPO
+          </a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <img class="spotlight-logo" src="assets/logo-kinahub.png" alt="KinaHub logo" />
-          <p class="spotlight-kicker">Full Stack</p>
+        <article class="spotlight-card">
           <h3>KinaHub</h3>
+          <img class="spotlight-logo" src="assets/logo-kinahub.png" alt="KinaHub logo" />
           <p>Location-aware e-commerce platform with an AI shopping assistant (OpenRouter LLM), seller CRM dashboard, smart cart, and advanced filtering — built with React, Django, and PostgreSQL.</p>
-          <p class="spotlight-meta">Why it matters: it proves I can ship a polished full-stack app with real API integration.</p>
-          <div class="chips">
-            <span>React</span>
-            <span>Django</span>
-            <span>AI</span>
+          <div class="spotlight-actions">
+            <a class="spotlight-btn" href="https://kinahub.vercel.app" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              LIVE SITE
+            </a>
+            <a class="spotlight-btn" href="https://github.com/DevXtechnic/KinaHub" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              VIEW SOURCE
+            </a>
           </div>
-          <p class="spotlight-stat">Mood: clean and capable</p>
-          <a class="spotlight-link" href="https://kinahub.vercel.app" target="_blank" rel="noopener noreferrer">Live site →</a>
-          <a class="spotlight-link" href="https://github.com/DevXtechnic/KinaHub" target="_blank" rel="noopener noreferrer" style="margin-top:0.2rem">View source →</a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <img class="spotlight-logo" src="assets/logo-binodlivestock.png" alt="BinodLivestock logo" />
-          <p class="spotlight-kicker">Client Work</p>
+        <article class="spotlight-card">
           <h3>BinodLivestock</h3>
+          <img class="spotlight-logo" src="assets/logo-binodlivestock.png" alt="BinodLivestock logo" />
           <p>Full-stack livestock marketplace for buying and selling goats, chickens, and farm animals — built with Next.js, Express, Prisma, and PostgreSQL.</p>
-          <p class="spotlight-meta">Why it matters: real users, real backend — not a toy project.</p>
-          <div class="chips">
-            <span>Next.js</span>
-            <span>Express</span>
-            <span>PostgreSQL</span>
-          </div>
-          <p class="spotlight-stat">Mood: clean delivery</p>
-          <a class="spotlight-link" href="http://binodgurung.com.np/" target="_blank" rel="noopener noreferrer">Live site →</a>
+          <a class="spotlight-btn" href="http://binodgurung.com.np/" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            LIVE SITE
+          </a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <img class="spotlight-logo" src="assets/logo-jillab.png" alt="Jillab logo" />
-          <p class="spotlight-kicker">Personal Site</p>
+        <article class="spotlight-card">
           <h3>Jillab</h3>
+          <img class="spotlight-logo" src="assets/logo-jillab.png" alt="Jillab logo" />
           <p>Aesthetic personal website for my brother — video background, custom music player, snowfall effects, and a glowing cursor. Pure HTML/CSS/JS, zero frameworks.</p>
-          <p class="spotlight-meta">Why it matters: proves you don't need a framework to ship something that looks this good.</p>
-          <div class="chips">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Vanilla JS</span>
-          </div>
-          <p class="spotlight-stat">Mood: ship first, refine later</p>
-          <a class="spotlight-link" href="http://jillab.vercel.app/" target="_blank" rel="noopener noreferrer">Live site →</a>
+          <a class="spotlight-btn" href="http://jillab.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            LIVE SITE
+          </a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <img class="spotlight-logo" src="assets/logo-rvx-ultralock.png" alt="RVX-UltraLock logo" />
-          <p class="spotlight-kicker">Security Tool</p>
+        <article class="spotlight-card">
           <h3>RVX-UltraLock</h3>
-          <p>A hardened locking utility built for security-conscious Linux users who want real control over their system.</p>
-          <p class="spotlight-meta">Why it matters: it shows I think about security, not just features.</p>
-          <div class="chips">
-            <span>Linux</span>
-            <span>Security</span>
-            <span>CLI</span>
-          </div>
-          <p class="spotlight-stat">Mood: locked and loaded</p>
-          <a class="spotlight-link" href="https://github.com/DevXtechnic/RVX-UltraLock" target="_blank" rel="noopener noreferrer">Open repo →</a>
+          <img class="spotlight-logo" src="assets/logo-rvx-ultralock.png" alt="RVX-UltraLock logo" />
+          <p>Focus-first YouTube RVX build with UltraLock — block settings access for hours or permanently to kill distractions. Built on ReVanced Extended patches for Android.</p>
+          <a class="spotlight-btn" href="https://github.com/DevXtechnic/RVX-UltraLock" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            VIEW REPO
+          </a>
         </article>
-        <article class="spotlight-card tilt">
-          <div class="spotlight-swatch" aria-hidden="true"></div>
-          <img class="spotlight-logo" src="assets/logo-snapcode.png" alt="Snapcode logo" />
-          <p class="spotlight-kicker">Browser Extension</p>
+        <article class="spotlight-card">
           <h3>Snapcode</h3>
+          <img class="spotlight-logo" src="assets/logo-snapcode.png" alt="Snapcode logo" />
           <p>Firefox extension for instant visual element inspection — hover any element, click it, and get its HTML, computed CSS, a robust selector, and a screenshot bundled into a Markdown report copied straight to your clipboard.</p>
-          <p class="spotlight-meta">Why it matters: built for AI-assisted development workflows where you need answers, not a DevTools pilgrimage.</p>
-          <div class="chips">
-            <span>Firefox</span>
-            <span>Extension</span>
-            <span>DevTools</span>
-          </div>
-          <p class="spotlight-stat">Mood: inspect fast, ship faster</p>
-          <a class="spotlight-link" href="https://addons.mozilla.org/en-US/firefox/addon/snapcode/" target="_blank" rel="noopener noreferrer">Get on Firefox →</a>
+          <a class="spotlight-btn" href="https://addons.mozilla.org/en-US/firefox/addon/snapcode/" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            GET ON FIREFOX
+          </a>
         </article>
       </div>
     </section>
