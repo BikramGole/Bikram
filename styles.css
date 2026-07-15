@@ -3213,6 +3213,23 @@ body[data-theme="zen"] .avatar-card .zen-avatar {
   display: block !important;
 }
 
+.avatar-photo {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 3;
+  position: relative;
+  margin-left: 8px;
+  border: 2px solid var(--border);
+  box-shadow: 0 0 18px var(--clean-glow-cyan);
+}
+
+body[data-theme="material3"] .avatar-card .avatar-photo,
+body[data-theme="zen"] .avatar-card .avatar-photo {
+  display: none !important;
+}
+
 @keyframes android-idle {
   0%,
   100% { transform: perspective(520px) rotateX(2deg) translateY(0) rotate(0deg); }
