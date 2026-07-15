@@ -186,6 +186,7 @@ const ctx = canvas?.getContext("2d");
 let stars = [];
 let lastStarFrame = 0;
 let starsAnimation = null;
+let shootingStars = [];
 const runtimeFlags = {
   isConstrained: false,
   isFirefoxLike: false,
@@ -236,6 +237,21 @@ function resizeCanvas() {
   }));
 }
 
+function spawnShootingStar() {
+  const angle = Math.PI * 0.55 + Math.random() * Math.PI * 0.2;
+  const speed = 8 + Math.random() * 12;
+  shootingStars.push({
+    x: Math.random() * canvas.width * 1.4 - canvas.width * 0.2,
+    y: -(10 + Math.random() * 30),
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
+    life: 1,
+    decay: 0.005 + Math.random() * 0.01,
+    trailLen: 50 + Math.random() * 80,
+    thickness: 1.2 + Math.random() * 1.8,
+  });
+}
+
 function drawStars(timestamp = 0) {
   if (!canvas || !ctx) return;
   if (document.hidden) {
@@ -266,6 +282,47 @@ function drawStars(timestamp = 0) {
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();
   });
+
+  const constrained = runtimeFlags.isConstrained;
+  const spawnRate = constrained ? 0.004 : 0.018;
+  if (shootingStars.length < (constrained ? 2 : 4) && Math.random() < spawnRate * frameFactor) {
+    spawnShootingStar();
+  }
+
+  for (let i = shootingStars.length - 1; i >= 0; i--) {
+    const s = shootingStars[i];
+    s.x += s.vx;
+    s.y += s.vy;
+    s.life -= s.decay;
+
+    if (s.life <= 0 || s.y > canvas.height + 100 || s.x > canvas.width + 100 || s.x < -100) {
+      shootingStars.splice(i, 1);
+      continue;
+    }
+
+    const tx = s.x - s.vx * s.trailLen * 0.08;
+    const ty = s.y - s.vy * s.trailLen * 0.08;
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(tx, ty);
+    const grad = ctx.createLinearGradient(s.x, s.y, tx, ty);
+    grad.addColorStop(0, `rgba(255, 255, 255, ${s.life * 0.85})`);
+    grad.addColorStop(0.5, `rgba(180, 220, 255, ${s.life * 0.3})`);
+    grad.addColorStop(1, "rgba(150, 200, 255, 0)");
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = s.thickness * s.life;
+    ctx.lineCap = "round";
+    ctx.stroke();
+
+    const glowSize = 4 + s.thickness * 2;
+    const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glowSize);
+    g.addColorStop(0, `rgba(255, 255, 255, ${s.life * 0.75})`);
+    g.addColorStop(1, "rgba(180, 215, 255, 0)");
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, glowSize, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
   starsAnimation = requestAnimationFrame(drawStars);
 }
@@ -1124,6 +1181,120 @@ function initThemeSwitcher() {
     const next = THEME_OPTIONS[(idx + 1 + THEME_OPTIONS.length) % THEME_OPTIONS.length];
     applyTheme(next, true);
   });
+}
+
+function initPageTransition() {
+  const transition = document.getElementById("page-transition");
+  if (!transition || prefersReducedMotion) return;
+
+  transition.style.transition = "none";
+  transition.style.opacity = "1";
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      transition.style.transition = "opacity var(--motion-base) ease";
+      transition.style.opacity = "0";
+    });
+  });
+
+  document.querySelectorAll('a[href$=".html"], a[href*=".html?"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("http") || href.startsWith("#")) return;
+      e.preventDefault();
+      transition.style.transition = "opacity var(--motion-base) ease";
+      transition.style.opacity = "1";
+      setTimeout(() => { window.location.href = href; }, 240);
+    });
+  });
+}
+
+function initPageMascot() {
+  const container = document.getElementById("page-mascot");
+  const canvas = document.getElementById("mascot-canvas");
+  if (!container || !canvas || prefersReducedMotion) return;
+  if (window.matchMedia?.("(pointer: coarse)").matches) {
+    container.style.display = "none";
+    return;
+  }
+
+  const SIZE = 84;
+  const BLOCK = 12;
+  const COLS = Math.ceil(SIZE / BLOCK);
+  const ROWS = Math.ceil(SIZE / BLOCK);
+  const TOTAL = COLS * ROWS;
+
+  canvas.width = SIZE;
+  canvas.height = SIZE;
+  const ctx = canvas.getContext("2d");
+
+  const srcCanvas = document.createElement("canvas");
+  srcCanvas.width = SIZE;
+  srcCanvas.height = SIZE;
+  const srcCtx = srcCanvas.getContext("2d");
+
+  const img = new Image();
+  img.src = "bikram.png";
+
+  img.onload = () => {
+    srcCtx.drawImage(img, 0, 0, SIZE, SIZE);
+
+    const blocks = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        blocks.push({
+          sx: c * BLOCK, sy: r * BLOCK,
+          v: 1, tv: 1, ox: 0, tox: 0, oy: 0, toy: 0,
+        });
+      }
+    }
+
+    let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+    let cx = 0, cy = 0;
+    let lastGlitch = 0;
+
+    document.addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
+
+    function scramble() {
+      const n = 3 + Math.floor(Math.random() * 8);
+      for (let i = 0; i < n; i++) {
+        const b = blocks[Math.floor(Math.random() * TOTAL)];
+        if (Math.random() < 0.22) { b.tv = 1; b.tox = 0; b.toy = 0; }
+        else { b.tv = Math.random() > 0.1 ? 1 : 0; b.tox = Math.floor(Math.random() * 9) - 4; b.toy = Math.random() < 0.2 ? Math.floor(Math.random() * 5) - 2 : 0; }
+      }
+    }
+
+    function tick(now) {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+
+      if (now - lastGlitch > 90) { lastGlitch = now; scramble(); }
+
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      for (const b of blocks) {
+        b.v += (b.tv - b.v) * 0.35;
+        b.ox += (b.tox - b.ox) * 0.25;
+        b.oy += (b.toy - b.oy) * 0.25;
+        if (b.v < 0.01) continue;
+        ctx.globalAlpha = Math.min(1, b.v);
+        const sw = Math.min(BLOCK, SIZE - b.sx), sh = Math.min(BLOCK, SIZE - b.sy);
+        ctx.drawImage(srcCanvas, b.sx, b.sy, sw, sh, b.sx + b.ox, b.sy + b.oy, sw, sh);
+        if (b.tox !== 0 || b.toy !== 0) {
+          ctx.fillStyle = "rgba(255,50,80,0.12)";
+          ctx.fillRect(b.sx + b.ox, b.sy + b.oy, sw, sh);
+        }
+      }
+      ctx.globalAlpha = 1;
+
+      container.style.left = cx + "px";
+      container.style.top = cy + "px";
+
+      requestAnimationFrame(tick);
+    }
+
+    for (let i = 0; i < 12; i++) setTimeout(scramble, i * 40);
+    requestAnimationFrame(tick);
+  };
 }
 
 function initNavThemeGuard() {
@@ -2271,6 +2442,8 @@ function initPersonaQuiz() {
 initPenguinDateBadge();
 initThemeSwitcher();
 initNavThemeGuard();
+initPageTransition();
+initPageMascot();
 initHeroTypewriters();
 initCliSnapshotTypewriter();
 initNamePronounce();
