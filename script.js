@@ -345,6 +345,36 @@ let commandPalette = document.getElementById("command-palette");
 let commandBackdrop = document.getElementById("command-backdrop");
 let commandInput = document.getElementById("command-input");
 let commandResults = document.getElementById("command-results");
+const hamburger = document.querySelector(".hamburger");
+const siteHeader = document.querySelector(".site-header");
+
+if (hamburger && siteHeader) {
+  hamburger.addEventListener("click", () => {
+    const isOpen = siteHeader.classList.toggle("menu-open");
+    hamburger.classList.toggle("active");
+    hamburger.setAttribute("aria-expanded", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  });
+
+  siteHeader.querySelectorAll("nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      siteHeader.classList.remove("menu-open");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    if (siteHeader.classList.contains("menu-open") && !siteHeader.contains(e.target)) {
+      siteHeader.classList.remove("menu-open");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
+  });
+}
+
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
 const quizQuestion = document.getElementById("quiz-question");
@@ -721,7 +751,7 @@ const personaQuizQuestions = [
   { question: "In Black Flag theme, the hero gun appears on which side of title?", options: ["Left", "Right", "Both sides", "It is hidden"], answer: 0 },
   { question: "Which mode label replaced the old Libertarian theme?", options: ["Paper Link", "Neo Blue", "Black Flag Uprising", "Blood Moon"], answer: 2 },
   { question: "What vibe best matches this site?", options: ["Corporate dashboard", "Chaotic fun", "News portal", "Minimal blog"], answer: 1 },
-  { question: "Which email is marked as Primary in Contact?", options: ["Developer.genius@gmail.com", "Bikramgole.genius@keemail.me", "neo@matrix.com", "devx@proton.me"], answer: 1 },
+  { question: "Which email is marked as Primary in Contact?", options: ["Developer.genius@gmail.com", "bikramgole.genius@gmail.com", "neo@matrix.com", "devx@proton.me"], answer: 1 },
   { question: "What does the quiz do when current pool runs out?", options: ["Auto-download more", "Stops and asks reset/refresh", "Repeats previous 10", "Crashes intentionally"], answer: 1 },
   { question: "Which page describes Identity Snapshot?", options: ["Home", "Contact", "About", "All pages"], answer: 2 },
   { question: "Which section title includes the word Console?", options: ["Mission Console", "Open Channel", "Identity Snapshot", "Live GitHub"], answer: 0 },
