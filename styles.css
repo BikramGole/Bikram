@@ -5749,19 +5749,12 @@ body[data-page="home"] .github-layout {
   position: fixed;
   z-index: 9997;
   pointer-events: none;
-  width: 72px;
-  height: 72px;
+  width: 14px;
+  height: 14px;
   left: 0;
   top: 0;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 0 12px 4px var(--clean-glow-cyan);
-  transform: translate(-50%, -42%);
-}
-
-#page-mascot img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
+  background: var(--blue);
+  box-shadow: 0 0 10px 4px var(--clean-glow-cyan), 0 0 24px 6px var(--blue);
+  transform: translate(-50%, -50%);
 }
