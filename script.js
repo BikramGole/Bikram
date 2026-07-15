@@ -1210,91 +1210,27 @@ function initPageTransition() {
 }
 
 function initPageMascot() {
-  const container = document.getElementById("page-mascot");
-  const canvas = document.getElementById("mascot-canvas");
-  if (!container || !canvas || prefersReducedMotion) return;
+  const dot = document.getElementById("page-mascot");
+  if (!dot || prefersReducedMotion) return;
   if (window.matchMedia?.("(pointer: coarse)").matches) {
-    container.style.display = "none";
+    dot.style.display = "none";
     return;
   }
 
-  const SIZE = 84;
-  const BLOCK = 12;
-  const COLS = Math.ceil(SIZE / BLOCK);
-  const ROWS = Math.ceil(SIZE / BLOCK);
-  const TOTAL = COLS * ROWS;
+  let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+  let cx = tx, cy = ty;
 
-  canvas.width = SIZE;
-  canvas.height = SIZE;
-  const ctx = canvas.getContext("2d");
+  document.addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
 
-  const srcCanvas = document.createElement("canvas");
-  srcCanvas.width = SIZE;
-  srcCanvas.height = SIZE;
-  const srcCtx = srcCanvas.getContext("2d");
-
-  const img = new Image();
-  img.src = "bikram.png";
-
-  img.onload = () => {
-    srcCtx.drawImage(img, 0, 0, SIZE, SIZE);
-
-    const blocks = [];
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        blocks.push({
-          sx: c * BLOCK, sy: r * BLOCK,
-          v: 1, tv: 1, ox: 0, tox: 0, oy: 0, toy: 0,
-        });
-      }
-    }
-
-    let tx = window.innerWidth / 2, ty = window.innerHeight / 2;
-    let cx = 0, cy = 0;
-    let lastGlitch = 0;
-
-    document.addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
-
-    function scramble() {
-      const n = 3 + Math.floor(Math.random() * 8);
-      for (let i = 0; i < n; i++) {
-        const b = blocks[Math.floor(Math.random() * TOTAL)];
-        if (Math.random() < 0.22) { b.tv = 1; b.tox = 0; b.toy = 0; }
-        else { b.tv = Math.random() > 0.1 ? 1 : 0; b.tox = Math.floor(Math.random() * 9) - 4; b.toy = Math.random() < 0.2 ? Math.floor(Math.random() * 5) - 2 : 0; }
-      }
-    }
-
-    function tick(now) {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
-
-      if (now - lastGlitch > 90) { lastGlitch = now; scramble(); }
-
-      ctx.clearRect(0, 0, SIZE, SIZE);
-      for (const b of blocks) {
-        b.v += (b.tv - b.v) * 0.35;
-        b.ox += (b.tox - b.ox) * 0.25;
-        b.oy += (b.toy - b.oy) * 0.25;
-        if (b.v < 0.01) continue;
-        ctx.globalAlpha = Math.min(1, b.v);
-        const sw = Math.min(BLOCK, SIZE - b.sx), sh = Math.min(BLOCK, SIZE - b.sy);
-        ctx.drawImage(srcCanvas, b.sx, b.sy, sw, sh, b.sx + b.ox, b.sy + b.oy, sw, sh);
-        if (b.tox !== 0 || b.toy !== 0) {
-          ctx.fillStyle = "rgba(255,50,80,0.12)";
-          ctx.fillRect(b.sx + b.ox, b.sy + b.oy, sw, sh);
-        }
-      }
-      ctx.globalAlpha = 1;
-
-      container.style.left = cx + "px";
-      container.style.top = cy + "px";
-
-      requestAnimationFrame(tick);
-    }
-
-    for (let i = 0; i < 12; i++) setTimeout(scramble, i * 40);
+  function tick() {
+    cx += (tx - cx) * 0.12;
+    cy += (ty - cy) * 0.12;
+    dot.style.left = cx + "px";
+    dot.style.top = cy + "px";
     requestAnimationFrame(tick);
-  };
+  }
+
+  requestAnimationFrame(tick);
 }
 
 function initNavThemeGuard() {
