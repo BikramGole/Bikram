@@ -5609,8 +5609,23 @@ body[data-page="home"] .github-layout {
   }
 
   .name-speak {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
+    right: -0.2rem;
+    top: -0.6rem;
+    transform: translate(0, -0.3em) rotate(-8deg) scale(1);
+  }
+
+  .name-speak.ready {
+    transform: translate(0, -0.5em) rotate(-8deg) scale(1);
+  }
+
+  .name-speak:hover {
+    transform: translate(0, -0.6em) rotate(-8deg) scale(1.05);
+  }
+
+  .name-speak:active {
+    transform: translate(0, -0.45em) rotate(-8deg) scale(0.98);
   }
 
   #command-input,
