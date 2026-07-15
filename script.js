@@ -1814,30 +1814,19 @@ function initCliSnapshotTypewriter() {
     if (hasStarted) return;
     hasStarted = true;
 
-    lines.forEach((span) => {
-      if (span.classList.contains("cli-gap")) {
-        span.textContent = "\u00A0";
-      } else {
+    const outputSpans = [];
+    lines.forEach((span, idx) => {
+      if (span.classList.contains("cli-output")) {
         span.textContent = "";
+        outputSpans.push({ span, text: originalLines[idx] || "" });
+      } else {
+        span.textContent = originalLines[idx] || "\u00A0";
       }
     });
 
     const typeLine = (index) => {
-      if (index >= lines.length) return;
-      const span = lines[index];
-      const text = originalLines[index] || "";
-
-      if (span.classList.contains("cli-gap")) {
-        span.textContent = "\u00A0";
-        window.setTimeout(() => typeLine(index + 1), 140);
-        return;
-      }
-
-      if (span.classList.contains("cli-prompt")) {
-        span.textContent = text;
-        window.setTimeout(() => typeLine(index + 1), 240);
-        return;
-      }
+      if (index >= outputSpans.length) return;
+      const { span, text } = outputSpans[index];
 
       const words = text.split(/(\s+)/);
       let wordIdx = 0;
@@ -1853,7 +1842,7 @@ function initCliSnapshotTypewriter() {
       typeWord();
     };
 
-    window.setTimeout(() => typeLine(0), 160);
+    window.setTimeout(() => typeLine(0), 360);
   };
 
   if ("IntersectionObserver" in window) {
