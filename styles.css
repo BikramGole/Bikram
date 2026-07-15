@@ -3214,9 +3214,9 @@ body[data-theme="zen"] .avatar-card .zen-avatar {
 }
 
 .avatar-photo {
-  width: 136px;
-  height: 136px;
-  border-radius: 50%;
+  width: 130px;
+  height: 150px;
+  border-radius: 8px;
   object-fit: cover;
   z-index: 3;
   position: relative;
