@@ -5482,6 +5482,16 @@ body[data-page="home"] .github-layout {
   }
 }
 
+/* Nav contains header-tools on desktop */
+.site-header nav {
+  flex: 1;
+  align-items: center;
+}
+
+.site-header nav .header-tools {
+  margin-left: auto;
+}
+
 /* Hamburger Menu */
 .hamburger {
   display: none;
@@ -5561,6 +5571,19 @@ body[data-page="home"] .github-layout {
     padding: 0.6rem 1.2rem;
   }
 
+  .site-header nav .header-tools {
+    margin-left: 0;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: auto;
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+
+  .site-header nav .header-tools .theme-top-label {
+    display: inline;
+  }
+
   .hero-name-row {
     flex-wrap: nowrap;
   }
@@ -5586,9 +5609,8 @@ body[data-page="home"] .github-layout {
   }
 
   .name-speak {
-    width: 44px !important;
-    height: 44px !important;
-    right: -0.5rem !important;
+    width: 36px;
+    height: 36px;
   }
 
   #command-input,
