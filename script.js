@@ -1897,10 +1897,24 @@ function initCliSnapshotTypewriter() {
         return;
       }
 
-      const speed = span.classList.contains("cli-prompt") ? 18 : 20;
-      typeTextTo(span, text, speed, "");
-      const duration = Math.max(text.length * speed + 120, 200);
-      window.setTimeout(() => typeLine(index + 1), duration);
+      if (span.classList.contains("cli-prompt")) {
+        span.textContent = text;
+        window.setTimeout(() => typeLine(index + 1), 240);
+        return;
+      }
+
+      const words = text.split(/(\s+)/);
+      let wordIdx = 0;
+      const typeWord = () => {
+        if (wordIdx >= words.length) {
+          window.setTimeout(() => typeLine(index + 1), 360);
+          return;
+        }
+        wordIdx++;
+        span.textContent = words.slice(0, wordIdx).join("");
+        window.setTimeout(typeWord, 100 + Math.random() * 80);
+      };
+      typeWord();
     };
 
     window.setTimeout(() => typeLine(0), 160);
