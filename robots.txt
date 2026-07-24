@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devxtechnic.github.io/sitemap.xml
+Sitemap: https://www.bikramgole.com.np/sitemap.xml

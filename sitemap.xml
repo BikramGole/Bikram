@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://devxtechnic.github.io/</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://www.bikramgole.com.np/</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.bikramgole.com.np/og-image.svg</image:loc>
+      <image:title>Bikram Gole — Aura Farmer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.bikramgole.com.np/bikram.jpeg</image:loc>
+      <image:title>Bikram Gole portrait</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://devxtechnic.github.io/about.html</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://www.bikramgole.com.np/about.html</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.bikramgole.com.np/og-image.svg</image:loc>
+      <image:title>Bikram Gole — About page</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://devxtechnic.github.io/contact.html</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://www.bikramgole.com.np/contact.html</loc>
+    <lastmod>2026-07-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.bikramgole.com.np/og-image.svg</image:loc>
+      <image:title>Bikram Gole — Contact page</image:title>
+    </image:image>
   </url>
 </urlset>
