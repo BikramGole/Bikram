@@ -1,4 +1,9 @@
 import { defineConfig } from "@playwright/test";
+import { existsSync } from "node:fs";
+
+const chromePath = existsSync("/home/neo/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome")
+  ? "/home/neo/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome"
+  : "/usr/bin/chromium";
 
 export default defineConfig({
   testDir: "./tests",
@@ -10,7 +15,7 @@ export default defineConfig({
   use: {
     baseURL: "http://127.0.0.1:4173",
     launchOptions: {
-      executablePath: "/home/neo/.cache/ms-playwright/chromium-1223/chrome-linux64/chrome",
+      executablePath: chromePath,
       args: ["--headless=new", "--no-sandbox"],
     },
   },
