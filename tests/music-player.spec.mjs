@@ -32,7 +32,7 @@ test.describe('Aura Music Player Feature & Aesthetic Tests', () => {
 
     const art = page.locator('#mo-art');
     await expect(art).toBeVisible();
-    await expect(art).toHaveAttribute('src', /cover-best-of-me\.svg/);
+    await expect(art).toHaveAttribute('src', /neffex-cover\.png/);
 
     const vinyl = page.locator('#mo-vinyl');
     await expect(vinyl).toBeAttached();
@@ -130,7 +130,7 @@ test.describe('Aura Music Player Feature & Aesthetic Tests', () => {
 
     // Verify title and album art updated to Destiny
     await expect(page.locator('#mo-title')).toHaveText('Destiny');
-    await expect(page.locator('#mo-art')).toHaveAttribute('src', /cover-destiny\.svg/);
+    await expect(page.locator('#mo-art')).toHaveAttribute('src', /neffex-destiny-cover\.png/);
   });
 
   test('Overlay closes on backdrop click and Esc key', async ({ page }) => {
@@ -171,5 +171,54 @@ test.describe('Aura Music Player Feature & Aesthetic Tests', () => {
       const bg = await panel.evaluate((el) => window.getComputedStyle(el).backgroundColor);
       expect(bg).toBeTruthy();
     }
+  });
+
+  test('YouTube-style keyboard shortcuts (Space, Arrows, M, N, P, S, R)', async ({ page }) => {
+    await page.goto(BASE + '/');
+    await page.locator('#nav-music-btn').click();
+    const overlay = page.locator('#music-overlay');
+    await expect(overlay).toHaveClass(/open/);
+
+    // Verify shortcuts hint bar is displayed
+    const hint = page.locator('.mo-shortcuts-hint');
+    await expect(hint).toBeVisible();
+
+    // Space toggles playback
+    await page.keyboard.press('Space');
+    await page.waitForTimeout(200);
+
+    // M toggles mute
+    await page.keyboard.press('m');
+    await expect(page.locator('#mo-vol-pct')).toHaveText('0%');
+    await page.keyboard.press('m');
+    await expect(page.locator('#mo-vol-pct')).toHaveText('80%');
+
+    // ArrowUp and ArrowDown change volume
+    await page.keyboard.press('ArrowUp');
+    await expect(page.locator('#mo-vol-pct')).toHaveText('85%');
+    await page.keyboard.press('ArrowDown');
+    await expect(page.locator('#mo-vol-pct')).toHaveText('80%');
+
+    // S toggles shuffle
+    const shuffleBtn = page.locator('#mo-shuffle');
+    await page.keyboard.press('s');
+    await expect(shuffleBtn).toHaveClass(/active/);
+    await page.keyboard.press('s');
+    await expect(shuffleBtn).not.toHaveClass(/active/);
+
+    // R toggles repeat
+    const repeatBtn = page.locator('#mo-repeat');
+    await page.keyboard.press('r');
+    await expect(repeatBtn).toHaveClass(/active/);
+    await page.keyboard.press('r');
+    await expect(repeatBtn).not.toHaveClass(/active/);
+
+    // N switches track to Destiny
+    await page.keyboard.press('n');
+    await expect(page.locator('#mo-title')).toHaveText('Destiny');
+
+    // P switches track back to Best of Me
+    await page.keyboard.press('p');
+    await expect(page.locator('#mo-title')).toHaveText('Best of Me');
   });
 });
