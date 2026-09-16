@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120526"/>
+      <stop offset="50%" stop-color="#1f0a3d"/>
+      <stop offset="100%" stop-color="#070210"/>
+    </linearGradient>
+    <linearGradient id="neon-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c77dff"/>
+      <stop offset="50%" stop-color="#7b2cbf"/>
+      <stop offset="100%" stop-color="#00f5d4"/>
+    </linearGradient>
+    <radialGradient id="glow-core-2" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#9d4edd" stop-opacity="0.45"/>
+      <stop offset="60%" stop-color="#3c096c" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#120526" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow-filter-2" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" rx="20" fill="url(#bg-grad-2)"/>
+  <circle cx="200" cy="180" r="165" fill="url(#glow-core-2)"/>
+
+  <!-- Cosmic Celestial Rings -->
+  <circle cx="200" cy="180" r="130" fill="none" stroke="rgba(199, 125, 255, 0.2)" stroke-width="1.5" stroke-dasharray="6 12"/>
+  <circle cx="200" cy="180" r="105" fill="none" stroke="rgba(0, 245, 212, 0.3)" stroke-width="2" stroke-dasharray="24 16"/>
+
+  <!-- Prismatic Diamond / Astral Portal -->
+  <polygon points="200,80 280,180 200,280 120,180" fill="rgba(24, 7, 51, 0.75)" stroke="url(#neon-grad-2)" stroke-width="3" filter="url(#glow-filter-2)"/>
+  <polygon points="200,105 255,180 200,255 145,180" fill="none" stroke="rgba(0, 245, 212, 0.6)" stroke-width="1.5"/>
+
+  <!-- Celestial Orbit & Star Core -->
+  <ellipse cx="200" cy="180" rx="65" ry="20" fill="none" stroke="#c77dff" stroke-width="1.8" transform="rotate(-25 200 180)"/>
+  <circle cx="200" cy="180" r="22" fill="#0c0418" stroke="#00f5d4" stroke-width="2.5" filter="url(#glow-filter-2)"/>
+
+  <!-- Stylized Compass Star in Center -->
+  <polygon points="200,165 204,176 215,180 204,184 200,195 196,184 185,180 196,176" fill="#00f5d4"/>
+
+  <!-- Sparkles -->
+  <circle cx="130" cy="110" r="2.5" fill="#fff" opacity="0.8"/>
+  <circle cx="270" cy="115" r="3" fill="#c77dff" opacity="0.9"/>
+  <circle cx="115" cy="245" r="2" fill="#00f5d4" opacity="0.8"/>
+  <circle cx="285" cy="235" r="2.5" fill="#fff" opacity="0.75"/>
+
+  <!-- Top Badge -->
+  <rect x="135" y="32" width="130" height="22" rx="11" fill="rgba(199, 125, 255, 0.12)" stroke="rgba(199, 125, 255, 0.45)" stroke-width="1"/>
+  <text x="200" y="47" font-family="'Space Grotesk', system-ui, sans-serif" font-size="10" font-weight="700" fill="#c77dff" text-anchor="middle" letter-spacing="3">NEFFEX AUDIO</text>
+
+  <!-- Title & Artist -->
+  <text x="200" y="325" font-family="'Syne', 'Space Grotesk', sans-serif" font-size="28" font-weight="800" fill="#edf4ff" text-anchor="middle" letter-spacing="3">DESTINY</text>
+  <text x="200" y="352" font-family="'Space Grotesk', system-ui, sans-serif" font-size="13" font-weight="600" fill="#00f5d4" text-anchor="middle" letter-spacing="4">NEFFEX</text>
+
+  <!-- Border Highlight -->
+  <rect x="1" y="1" width="398" height="398" rx="19" fill="none" stroke="rgba(199, 125, 255, 0.35)" stroke-width="1.5"/>
+</svg>
