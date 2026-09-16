@@ -617,7 +617,7 @@
 }
 
 /* Playlist Panel */
-.mo-playlist-panel{
+.mo-shortcuts-hint{font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--muted);opacity:.7;letter-spacing:.04em;margin-top:.6rem;text-align:center;user-select:none;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.35rem}.mo-shortcuts-hint span{padding:.1rem .35rem;border-radius:4px;background:rgba(255,255,255,.07);border:1px solid rgba(143,204,255,.2);color:var(--blue-2);font-weight:600}.mo-playlist-panel{
   width:100%;
   max-height:0;
   overflow:hidden;
