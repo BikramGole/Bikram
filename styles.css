@@ -1113,3 +1113,19 @@ body[data-theme=material3] .mo-playlist li.active{
 .nav-music-btn.playing{border-color:rgba(143,204,255,.65);background:rgba(63,107,185,.28);color:var(--blue-2);box-shadow:0 0 18px rgba(98,183,255,.4)}
 .nav-music-btn.playing svg{color:var(--orange-2);opacity:1}
 .nav-music-btn svg{flex-shrink:0;opacity:.75;transition:color .16s,opacity .16s}
+/* CATPPUCCIN MACCHIATO: Calm navy base with lavender signal colors */
+:root[data-theme=macchiato],body[data-theme=macchiato]{--bg-0:#1E1E2E;--bg-1:#1E1E2E;--bg-2:#1E1E2E;--ink:#CDD6F4;--muted:#A6ADC8;--blue:#89B4FA;--blue-2:#89B4FA;--orange:#CBA6F7;--orange-2:#B4BEFE;--visited:#CBA6F7;--card:rgba(36,39,58,.9);--border:rgba(137,180,250,.36);--header:rgba(24,24,37,.94);--clean-glow-cyan:rgba(137,180,250,.24);--clean-glow-orange:rgba(203,166,247,.2)}
+html[data-theme=macchiato],body[data-theme=macchiato]{background:#1E1E2E;color:#CDD6F4}
+body[data-theme=macchiato] a{color:#89B4FA}
+body[data-theme=macchiato] a:visited{color:#CBA6F7}
+body[data-theme=macchiato] .site-header{background:rgba(24,24,37,.94);border-color:rgba(137,180,250,.36)}
+body[data-theme=macchiato] .hero,body[data-theme=macchiato] .panel{background:linear-gradient(145deg,rgba(36,39,58,.94),rgba(30,30,46,.96));border-color:rgba(137,180,250,.36)}
+body[data-theme=macchiato] .hero{background:radial-gradient(430px 150px at 2% 0,rgba(137,180,250,.16),transparent 72%),radial-gradient(300px 130px at 97% 100%,rgba(203,166,247,.12),transparent 75%),rgba(36,39,58,.94)}
+body[data-theme=macchiato] #hero-name{background:linear-gradient(135deg,#89B4FA,#B4BEFE);-webkit-background-clip:text;background-clip:text}
+body[data-theme=macchiato] .btn.primary{color:#1E1E2E;background:linear-gradient(120deg,#89B4FA,#CBA6F7)}
+body[data-theme=macchiato] .btn.ghost,body[data-theme=macchiato] .egg-btn{background:rgba(36,39,58,.72);border-color:rgba(137,180,250,.36)}
+body[data-theme=macchiato] nav a.active,body[data-theme=macchiato] nav a:hover{color:#CDD6F4;background:rgba(137,180,250,.14);border-color:rgba(137,180,250,.46)}
+body[data-theme=macchiato] .chips span,body[data-theme=macchiato] .repo-chip,body[data-theme=macchiato] .status-pill{background:rgba(137,180,250,.1);border-color:rgba(137,180,250,.3);color:#CDD6F4}
+body[data-theme=macchiato] .theme-cycle-btn,body[data-theme=macchiato] .theme-top-select{background:rgba(36,39,58,.9);border-color:rgba(137,180,250,.42);color:#CDD6F4}
+body[data-theme=macchiato] .section-rail{background:rgba(24,24,37,.9);border-color:rgba(137,180,250,.28)}
+body[data-theme=macchiato] .mo-panel{background:linear-gradient(155deg,rgba(36,39,58,.94),rgba(24,24,37,.97));border-color:rgba(137,180,250,.34)}
