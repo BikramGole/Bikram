@@ -20,11 +20,12 @@
   position:fixed;
   inset:0;
   background:radial-gradient(circle at 50% 35%,rgba(20,38,78,.48),rgba(2,5,14,.88));
-  backdrop-filter:blur(22px) saturate(160%);
-  -webkit-backdrop-filter:blur(22px) saturate(160%);
+  backdrop-filter:blur(12px) saturate(130%);
+  -webkit-backdrop-filter:blur(12px) saturate(130%);
   opacity:0;
   transition:opacity .35s ease;
   cursor:pointer;
+  transform:translateZ(0);
 }
 .music-overlay.open .mo-backdrop{
   opacity:1;
@@ -39,8 +40,8 @@
   border-radius:24px;
   padding:1.25rem 1.4rem 1.4rem;
   background:linear-gradient(155deg,rgba(14,24,48,.84),rgba(5,11,24,.94));
-  backdrop-filter:blur(32px) saturate(190%);
-  -webkit-backdrop-filter:blur(32px) saturate(190%);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
   border:1px solid rgba(143,204,255,.26);
   box-shadow:0 32px 90px rgba(0,0,0,.78),0 0 calc(35px + var(--beat-glow, 0px)) rgba(98,183,255,.18),inset 0 1px 0 rgba(255,255,255,.18);
   display:flex;
@@ -51,11 +52,19 @@
   transform:scale(var(--beat-scale, .94)) translateY(22px);
   opacity:0;
   transition:transform .38s cubic-bezier(.16,.84,.28,1),opacity .32s ease,border-color .25s,box-shadow .15s ease;
-  will-change:transform,box-shadow;
+  will-change:transform,opacity;
+  contain:layout style;
 }
 .music-overlay.open .mo-panel{
   transform:scale(var(--beat-scale, 1)) translateY(0);
   opacity:1;
+}
+/* While playing, beat-scale updates ~7Hz via JS — drop the transform
+   transition so every update doesn't re-interpolate (major jank source
+   when combined with backdrop-filter). Open/close animation still runs
+   because .playing is only present after open. */
+.music-overlay.playing .mo-panel{
+  transition:opacity .32s ease,border-color .25s,box-shadow .3s ease;
 }
 
 /* Head */
@@ -103,6 +112,13 @@
 @keyframes mo-eq{
   0%,100%{height:4px}
   50%{height:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .music-overlay.playing .mo-vinyl,
+  .music-overlay.playing .mo-sound-icon span,
+  .mo-pl-eq i{animation:none !important}
+  .mo-panel{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .mo-backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 .mo-head-text{
   display:flex;
@@ -205,9 +221,11 @@
   box-shadow:0 4px 20px rgba(0,0,0,.7),inset 0 0 0 1.5px rgba(255,255,255,.08);
   z-index:1;
   transition:right .45s cubic-bezier(.16,.84,.28,1);
-  animation:mo-spin 6s linear infinite;
+  animation:mo-spin 8s linear infinite;
   animation-play-state:paused;
   pointer-events:none;
+  will-change:transform;
+  transform:translateZ(0);
 }
 .music-overlay.playing .mo-vinyl{
   animation-play-state:running;
@@ -348,6 +366,7 @@
   width:100%;
   height:100%;
   display:block;
+  transform:translateZ(0);
 }
 .mo-vis-overlay{
   position:absolute;
@@ -422,6 +441,7 @@
   pointer-events:none;
   transition:height .15s ease;
   overflow:hidden;
+  will-change:width;
 }
 .mo-bar-glow{
   position:absolute;
