@@ -23,7 +23,7 @@ My website incorporates a variety of interactive and engaging features: ✨
 -   **Dynamic Theme Engine:** A robust theme system offering multiple visual styles, including `Liquid Glass` and `Black Flag Uprising`, with theme persistence across page transitions.
 -   **Interactive Mini Terminal:** A functional command-line interface for enhanced user engagement.
 -   **Persona Quiz Game:** An integrated game designed to interactively explore user personas.
--   **Live GitHub Repository Cards:** Displays real-time project information fetched from `github.com/DevXtechnic` via the GitHub API.
+-   **Live GitHub Repository Cards:** Displays real-time project information fetched from `github.com/BikramGole` via the GitHub API.
 -   **Engaging UI/UX:** Features such as easter eggs, pulse effects, and other dynamic interactions to create a vibrant user experience.
 
 ## Technology Stack
@@ -52,8 +52,8 @@ To set up and run my project on your local machine, follow these steps 👇:
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/DevXtechnic/DevXtechnic.github.io.git
-    cd DevXtechnic.github.io
+    git clone https://github.com/BikramGole/BikramGole.github.io.git
+    cd BikramGole.github.io
     ```
 2.  **Serve the files:**
     You can use a simple Python HTTP server 🐍:
