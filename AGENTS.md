@@ -1,4 +1,4 @@
-# DevXtechnic.github.io — Project Wiki
+# BikramGole.github.io — Project Wiki
 
 ## Stack
 - **Frontend:** Vanilla HTML, CSS, JavaScript (no framework)
