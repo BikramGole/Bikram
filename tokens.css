@@ -1,0 +1,72 @@
+:root {
+  color-scheme: light;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: oklch(98.6% 0.005 250); --color-paper-2: oklch(96.2% 0.008 252); --color-paper-3: oklch(93% 0.011 252);
+  --color-ink: oklch(21% 0.028 262); --color-ink-2: oklch(36% 0.022 260); --color-muted: oklch(46% 0.018 258);
+  --color-rule: oklch(90% 0.009 252); --color-rule-2: oklch(83% 0.012 252);
+  --color-graphite: oklch(21% 0.024 262); --color-graphite-2: oklch(26.5% 0.026 262); --color-graphite-ink: oklch(93% 0.010 250); --color-graphite-muted: oklch(69% 0.022 256);
+  --color-accent: oklch(47% 0.17 220); --color-accent-2: oklch(76% 0.13 215); --color-accent-wash: oklch(95% 0.028 220); --color-accent-ink: oklch(98.6% 0.005 250); --color-focus: oklch(47% 0.17 220);
+  --color-accent-deep: oklch(41% 0.17 220); --color-accent-edge: oklch(37% 0.15 220);
+  --color-glyph-1: oklch(89% 0.025 220); --color-glyph-2: oklch(81% 0.045 220); --color-glyph-3: oklch(70% 0.085 220); --color-glyph-4: oklch(60% 0.13 220);
+  --color-graphite-glyph-1: oklch(33% 0.03 220); --color-graphite-glyph-2: oklch(41% 0.05 220); --color-graphite-glyph-3: oklch(53% 0.1 220);
+  --color-key-face: oklch(99.4% 0.003 250); --color-key-edge: oklch(80% 0.016 254);
+  --font-display: "Familjen Grotesk", system-ui, sans-serif; --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-outlier: "JetBrains Mono", ui-monospace, monospace;
+  --radius-card: 8px; --radius-input: 6px; --radius-pill: 999px;
+  --cell-w: 8px; --cell-h: 16px; --cut: 8px; --cut-l: 16px;
+  --rule-hair: 1px; --shadow-card: 0 1px 2px oklch(21% 0.028 262 / 0.06);
+  --shadow-key: 0 3px 0 0 var(--color-key-edge), 0 6px 8px -4px oklch(21% 0.028 262 / 0.28), inset 0 1px 0 oklch(100% 0 0 / 0.9);
+  --shadow-key-accent: 0 3px 0 0 var(--color-accent-edge), 0 6px 8px -4px oklch(30% 0.12 260 / 0.45), inset 0 1px 0 oklch(100% 0 0 / 0.22);
+  --shadow-key-press: inset 0 1px 2px oklch(21% 0.028 262 / 0.14);
+  --tracking-display: -0.028em; --display-weight: 600;
+}
+
+/* Theme picker variants keep the same surface and type system while changing its palette. */
+:root[data-theme="mint"], body[data-theme="mint"] { color-scheme: light; --color-paper: oklch(98% 0.018 165); --color-paper-2: oklch(95% 0.025 165); --color-paper-3: oklch(91% 0.035 165); --color-ink: oklch(22% 0.035 175); --color-ink-2: oklch(38% 0.04 175); --color-muted: oklch(46% 0.035 175); --color-rule: oklch(88% 0.03 165); --color-rule-2: oklch(80% 0.04 165); --color-accent: oklch(44% 0.14 165); --color-accent-2: oklch(68% 0.13 165); --color-accent-wash: oklch(93% 0.05 165); --color-accent-ink: oklch(98% 0.018 165); --color-focus: oklch(44% 0.14 165); --color-accent-deep: oklch(38% 0.14 165); --color-accent-edge: oklch(34% 0.12 165); }
+:root[data-theme="sunset"], body[data-theme="sunset"] { color-scheme: light; --color-paper: oklch(98% 0.018 48); --color-paper-2: oklch(95% 0.028 48); --color-paper-3: oklch(91% 0.038 48); --color-ink: oklch(23% 0.04 30); --color-ink-2: oklch(39% 0.05 30); --color-muted: oklch(47% 0.045 35); --color-rule: oklch(88% 0.03 48); --color-rule-2: oklch(80% 0.04 48); --color-accent: oklch(48% 0.16 32); --color-accent-2: oklch(70% 0.14 32); --color-accent-wash: oklch(93% 0.05 45); --color-accent-ink: oklch(98% 0.018 48); --color-focus: oklch(48% 0.16 32); --color-accent-deep: oklch(41% 0.16 32); --color-accent-edge: oklch(36% 0.13 32); }
+:root[data-theme="midnight"], body[data-theme="midnight"] { color-scheme: dark; --color-paper: oklch(18% 0.025 258); --color-paper-2: oklch(23% 0.032 258); --color-paper-3: oklch(28% 0.038 258); --color-ink: oklch(94% 0.012 250); --color-ink-2: oklch(82% 0.018 250); --color-muted: oklch(73% 0.025 252); --color-rule: oklch(34% 0.035 258); --color-rule-2: oklch(43% 0.04 258); --color-accent: oklch(72% 0.14 255); --color-accent-2: oklch(83% 0.1 255); --color-accent-wash: oklch(28% 0.06 255); --color-accent-ink: oklch(18% 0.025 258); --color-focus: oklch(75% 0.14 255); --color-accent-deep: oklch(65% 0.14 255); --color-accent-edge: oklch(59% 0.12 255); }
+:root[data-theme="ember"], body[data-theme="ember"] { color-scheme: dark; --color-paper: oklch(18% 0.035 35); --color-paper-2: oklch(23% 0.045 35); --color-paper-3: oklch(29% 0.055 35); --color-ink: oklch(95% 0.018 50); --color-ink-2: oklch(83% 0.035 45); --color-muted: oklch(73% 0.045 42); --color-rule: oklch(35% 0.05 38); --color-rule-2: oklch(44% 0.06 38); --color-accent: oklch(72% 0.16 48); --color-accent-2: oklch(83% 0.13 48); --color-accent-wash: oklch(30% 0.08 45); --color-accent-ink: oklch(19% 0.035 35); --color-focus: oklch(75% 0.16 48); --color-accent-deep: oklch(64% 0.16 48); --color-accent-edge: oklch(58% 0.14 48); }
+:root[data-theme="arctic"], body[data-theme="arctic"] { color-scheme: dark; --color-paper: oklch(19% 0.035 210); --color-paper-2: oklch(24% 0.045 210); --color-paper-3: oklch(29% 0.055 210); --color-ink: oklch(94% 0.018 195); --color-ink-2: oklch(82% 0.035 200); --color-muted: oklch(73% 0.045 202); --color-rule: oklch(36% 0.05 205); --color-rule-2: oklch(45% 0.06 205); --color-accent: oklch(75% 0.13 195); --color-accent-2: oklch(85% 0.1 195); --color-accent-wash: oklch(30% 0.07 200); --color-accent-ink: oklch(19% 0.035 210); --color-focus: oklch(75% 0.13 195); --color-accent-deep: oklch(66% 0.13 195); --color-accent-edge: oklch(59% 0.11 195); }
+:root[data-theme="grape"], body[data-theme="grape"] { color-scheme: dark; --color-paper: oklch(19% 0.04 300); --color-paper-2: oklch(24% 0.05 300); --color-paper-3: oklch(30% 0.06 300); --color-ink: oklch(95% 0.018 300); --color-ink-2: oklch(83% 0.035 300); --color-muted: oklch(74% 0.045 300); --color-rule: oklch(37% 0.055 300); --color-rule-2: oklch(46% 0.065 300); --color-accent: oklch(75% 0.17 300); --color-accent-2: oklch(85% 0.13 300); --color-accent-wash: oklch(31% 0.09 300); --color-accent-ink: oklch(19% 0.04 300); --color-focus: oklch(75% 0.17 300); --color-accent-deep: oklch(66% 0.17 300); --color-accent-edge: oklch(60% 0.14 300); }
+:root[data-theme="toxic"], body[data-theme="toxic"] { color-scheme: dark; --color-paper: oklch(19% 0.035 130); --color-paper-2: oklch(24% 0.045 130); --color-paper-3: oklch(29% 0.055 130); --color-ink: oklch(95% 0.02 125); --color-ink-2: oklch(84% 0.04 125); --color-muted: oklch(74% 0.05 125); --color-rule: oklch(36% 0.055 130); --color-rule-2: oklch(45% 0.065 130); --color-accent: oklch(79% 0.16 125); --color-accent-2: oklch(88% 0.12 125); --color-accent-wash: oklch(31% 0.08 130); --color-accent-ink: oklch(19% 0.035 130); --color-focus: oklch(79% 0.16 125); --color-accent-deep: oklch(69% 0.16 125); --color-accent-edge: oklch(62% 0.13 125); }
+:root[data-theme="ocean"], body[data-theme="ocean"] { color-scheme: dark; --color-paper: oklch(18% 0.035 230); --color-paper-2: oklch(23% 0.045 230); --color-paper-3: oklch(29% 0.055 230); --color-ink: oklch(94% 0.018 220); --color-ink-2: oklch(82% 0.035 220); --color-muted: oklch(73% 0.045 220); --color-rule: oklch(35% 0.055 230); --color-rule-2: oklch(44% 0.065 230); --color-accent: oklch(73% 0.15 220); --color-accent-2: oklch(84% 0.11 220); --color-accent-wash: oklch(29% 0.08 220); --color-accent-ink: oklch(18% 0.035 230); --color-focus: oklch(73% 0.15 220); --color-accent-deep: oklch(64% 0.15 220); --color-accent-edge: oklch(58% 0.12 220); }
+:root[data-theme="bloodmoon"], body[data-theme="bloodmoon"] { color-scheme: dark; --color-paper: oklch(18% 0.04 15); --color-paper-2: oklch(23% 0.05 15); --color-paper-3: oklch(29% 0.06 15); --color-ink: oklch(95% 0.018 12); --color-ink-2: oklch(83% 0.035 12); --color-muted: oklch(73% 0.045 12); --color-rule: oklch(35% 0.055 15); --color-rule-2: oklch(44% 0.065 15); --color-accent: oklch(70% 0.17 15); --color-accent-2: oklch(82% 0.13 15); --color-accent-wash: oklch(29% 0.08 15); --color-accent-ink: oklch(18% 0.04 15); --color-focus: oklch(73% 0.17 15); --color-accent-deep: oklch(62% 0.17 15); --color-accent-edge: oklch(56% 0.14 15); }
+:root[data-theme="zen"], body[data-theme="zen"] { color-scheme: light; --color-paper: oklch(97% 0.025 82); --color-paper-2: oklch(94% 0.035 82); --color-paper-3: oklch(90% 0.045 82); --color-ink: oklch(25% 0.035 65); --color-ink-2: oklch(40% 0.04 65); --color-muted: oklch(48% 0.04 70); --color-rule: oklch(87% 0.035 82); --color-rule-2: oklch(79% 0.045 82); --color-accent: oklch(48% 0.12 65); --color-accent-2: oklch(69% 0.1 65); --color-accent-wash: oklch(92% 0.055 82); --color-accent-ink: oklch(97% 0.025 82); --color-focus: oklch(48% 0.12 65); --color-accent-deep: oklch(41% 0.12 65); --color-accent-edge: oklch(36% 0.1 65); }
+:root[data-theme="liquidglass"], body[data-theme="liquidglass"] { color-scheme: light; --color-paper: oklch(97% 0.015 235); --color-paper-2: oklch(93% 0.025 235); --color-paper-3: oklch(89% 0.035 235); --color-ink: oklch(22% 0.035 250); --color-ink-2: oklch(38% 0.04 250); --color-muted: oklch(47% 0.035 245); --color-rule: oklch(87% 0.025 235); --color-rule-2: oklch(79% 0.035 235); --color-accent: oklch(47% 0.15 235); --color-accent-2: oklch(70% 0.11 235); --color-accent-wash: oklch(92% 0.045 235); --color-accent-ink: oklch(97% 0.015 235); --color-focus: oklch(47% 0.15 235); --color-accent-deep: oklch(40% 0.15 235); --color-accent-edge: oklch(35% 0.12 235); }
+:root[data-theme="material3"], body[data-theme="material3"] { color-scheme: light; --color-paper: oklch(98% 0.01 270); --color-paper-2: oklch(95% 0.018 270); --color-paper-3: oklch(91% 0.028 270); --color-ink: oklch(23% 0.04 270); --color-ink-2: oklch(39% 0.045 270); --color-muted: oklch(47% 0.04 270); --color-rule: oklch(88% 0.02 270); --color-rule-2: oklch(80% 0.03 270); --color-accent: oklch(47% 0.16 270); --color-accent-2: oklch(70% 0.12 270); --color-accent-wash: oklch(93% 0.04 270); --color-accent-ink: oklch(98% 0.01 270); --color-focus: oklch(47% 0.16 270); --color-accent-deep: oklch(40% 0.16 270); --color-accent-edge: oklch(35% 0.13 270); }
+:root[data-theme="paper"], body[data-theme="paper"] { color-scheme: light; --color-paper: oklch(93% 0.035 78); --color-paper-2: oklch(89% 0.045 78); --color-paper-3: oklch(85% 0.055 78); --color-ink: oklch(24% 0.04 65); --color-ink-2: oklch(39% 0.045 65); --color-muted: oklch(47% 0.04 70); --color-rule: oklch(82% 0.04 78); --color-rule-2: oklch(74% 0.05 78); --color-accent: oklch(44% 0.13 250); --color-accent-2: oklch(65% 0.11 250); --color-accent-wash: oklch(88% 0.055 78); --color-accent-ink: oklch(98% 0.01 250); --color-focus: oklch(44% 0.13 250); --color-accent-deep: oklch(38% 0.13 250); --color-accent-edge: oklch(33% 0.11 250); }
+:root[data-theme="blackflag"], body[data-theme="blackflag"] { color-scheme: dark; --color-paper: oklch(18% 0.025 255); --color-paper-2: oklch(23% 0.035 255); --color-paper-3: oklch(29% 0.045 255); --color-ink: oklch(94% 0.035 85); --color-ink-2: oklch(82% 0.045 85); --color-muted: oklch(73% 0.05 85); --color-rule: oklch(35% 0.04 255); --color-rule-2: oklch(44% 0.05 255); --color-accent: oklch(74% 0.13 85); --color-accent-2: oklch(84% 0.1 85); --color-accent-wash: oklch(29% 0.06 85); --color-accent-ink: oklch(18% 0.025 255); --color-focus: oklch(74% 0.13 85); --color-accent-deep: oklch(65% 0.13 85); --color-accent-edge: oklch(58% 0.11 85); }
+:root[data-theme="macchiato"], body[data-theme="macchiato"] { color-scheme: dark; --color-paper: oklch(20% 0.025 30); --color-paper-2: oklch(25% 0.035 30); --color-paper-3: oklch(31% 0.045 30); --color-ink: oklch(94% 0.02 60); --color-ink-2: oklch(82% 0.035 50); --color-muted: oklch(72% 0.04 48); --color-rule: oklch(37% 0.04 30); --color-rule-2: oklch(46% 0.05 30); --color-accent: oklch(72% 0.14 28); --color-accent-2: oklch(83% 0.11 28); --color-accent-wash: oklch(31% 0.07 28); --color-accent-ink: oklch(20% 0.025 30); --color-focus: oklch(74% 0.14 28); --color-accent-deep: oklch(63% 0.14 28); --color-accent-edge: oklch(57% 0.12 28); }
+
+/* Static tools use the no-theme palette as baseline; selected theme rules override it at runtime. */
+:root:not([data-theme]) { color-scheme: light; --color-paper: oklch(98.6% 0.005 250); --color-paper-2: oklch(96.2% 0.008 252); --color-paper-3: oklch(93% 0.011 252); --color-ink: oklch(21% 0.028 262); --color-ink-2: oklch(36% 0.022 260); --color-muted: oklch(46% 0.018 258); --color-rule: oklch(90% 0.009 252); --color-rule-2: oklch(83% 0.012 252); --color-accent: oklch(47% 0.17 220); --color-accent-2: oklch(76% 0.13 215); --color-accent-wash: oklch(95% 0.028 220); --color-accent-ink: oklch(98.6% 0.005 250); --color-focus: oklch(47% 0.17 220); --color-accent-deep: oklch(41% 0.17 220); --color-accent-edge: oklch(37% 0.15 220); }
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url("./assets/fonts/familjen-grotesk-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("./assets/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("./assets/fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
