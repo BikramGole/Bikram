@@ -3,6 +3,7 @@
  * axes: light/grotesk-sans/cool · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: E, removed layered theme overrides and rebuilt the shared system around existing controls and content. */
 /* Hallmark · answered F7 · flat Cobalt rules group related controls and data surfaces */
+/* Hallmark · waive 59 · below 120px, dense ruled page · shorter gaps keep projects readable through the long home page */
 /* Hallmark · reworded "faq" to "Common questions" · 54 names acronym eyebrows */
 /* Hallmark · reworded "Open Channel ✉️" to "Open channel" · 30a names emoji icons */
 /* Hallmark · dropped "About Neo 🐧" and "Contact 📡" · redundant eyebrow copy */
@@ -28,7 +29,7 @@
   --site-dark-ink: var(--color-graphite-ink);
   --site-gutter: clamp(20px, 5vw, 88px);
   --site-width: 1440px;
-  --site-section-gap: clamp(72px, 10vw, 144px);
+  --site-section-gap: clamp(56px, 6vw, 88px);
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
@@ -86,6 +87,18 @@ b, strong { font-weight: 600; }
 .name-speak { width: 42px; height: 42px; position: absolute; z-index: 2; top: 14px; right: 14px; display: grid; place-items: center; border: 1px solid var(--site-rule-strong); border-radius: var(--radius-input); background: transparent; color: var(--site-ink); cursor: pointer; opacity: 1; pointer-events: auto; transform: none; }
 .name-speak svg { width: 20px; height: 20px; fill: currentColor; }
 
+/* A dark, personal masthead gives the home page a recognizable first impression. */
+body[data-page="home"] .hero { padding: var(--space-2xl); border: 1px solid var(--site-dark-raised); border-radius: 14px; background: var(--site-dark); color: var(--site-dark-ink); }
+body[data-page="home"] .hero h1, body[data-page="home"] .hero .tag, body[data-page="home"] .hero .status-line, body[data-page="home"] .hero .subtitle { color: var(--site-dark-ink); }
+body[data-page="home"] h1#hero-name, body[data-page="home"] #hero-name { color: var(--site-dark-ink); -webkit-text-fill-color: var(--site-dark-ink); }
+body[data-page="home"] .hero .tag { color: var(--color-accent-2); }
+body[data-page="home"] .hero .subtitle { opacity: .84; }
+body[data-page="home"] .hero .chips span { border-color: var(--site-dark-raised); background: var(--site-dark-raised); color: var(--site-dark-ink); }
+body[data-page="home"] .hero .btn.ghost { border-color: var(--site-dark-ink); background: transparent; color: var(--site-dark-ink); }
+body[data-page="home"] .hero .avatar-card { border-color: var(--site-dark-raised); background: var(--site-dark-raised); color: var(--site-dark-ink); }
+body[data-page="home"] .hero .name-speak { color: var(--site-dark-ink); }
+body[data-page="home"] .hero :focus-visible { outline-color: var(--color-accent-2); }
+
 .panel { margin-top: var(--site-section-gap); padding: 0; }
 .panel > h2, .section-head { margin-bottom: 32px; }
 .panel > p, .section-head > p, .panel-inner > p { max-width: 65ch; color: var(--site-muted); font-size: 17px; line-height: 1.6; }
@@ -109,9 +122,8 @@ b, strong { font-weight: 600; }
 .pulse-node span { font-variant-numeric: tabular-nums; }
 .signal-board { padding-top: var(--space-md); color: var(--site-muted); font-size: 14px; }
 .spotlight-label { display: block; margin-bottom: 20px; }
-.spotlight-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-.spotlight-card { grid-column: span 2; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
-.spotlight-card:nth-child(3n + 1) { grid-column: span 3; }
+.spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.spotlight-card { min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; }
 .spotlight-card h3 { font-size: 24px; }
 .spotlight-card p, .fact-card p, .favorite-card p, .chaos-card p, .repo-card p { margin-top: var(--space-xs); color: var(--site-muted); line-height: 1.55; }
 .spotlight-card img { width: 56px; height: 56px; margin-bottom: 20px; object-fit: contain; }
@@ -214,18 +226,19 @@ body[data-page="not-found"] .redirect-note { font-size: 14px; }
 body[data-page="not-found"] .redirect-note a { color: var(--site-accent); }
 
 @media (max-width: 900px) {
-  :root { --site-gutter: 28px; --site-section-gap: 88px; --gap-columns: 20px; }
+  :root { --site-gutter: 28px; --site-section-gap: 68px; --gap-columns: 20px; }
   .site-header { padding-inline: var(--space-lg); gap: var(--space-sm); }
   .header-tools { gap: var(--space-xs); }
   .theme-top-label { display: none; }
   .theme-top-select { max-width: 130px; }
   .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(220px, .8fr); gap: 28px; }
+  .spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .avatar-card { min-height: 320px; }
   body[data-page="about"] #identity-snapshot .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body[data-page="about"] #strengths .fact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
-  :root { --site-gutter: 18px; --site-section-gap: 68px; --gap-columns: 16px; }
+  :root { --site-gutter: 18px; --site-section-gap: 52px; --gap-columns: 16px; }
   body { padding-bottom: var(--space-3xl); }
   .site-header { min-height: 58px; position: sticky; top: var(--space-xs); z-index: var(--z-sticky-nav); flex-wrap: wrap; }
   .hamburger { width: 44px; height: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; margin-left: auto; }
@@ -237,6 +250,7 @@ body[data-page="not-found"] .redirect-note a { color: var(--site-accent); }
   .theme-top-select { max-width: min(50vw, 190px); }
   main { margin-top: var(--space-2xl); }
   .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  body[data-page="home"] .hero { padding: var(--space-lg); }
   .hero-grid > div:first-child { grid-row: 1; }
   .avatar-card { min-height: 340px; max-height: 440px; grid-row: 2; }
   h1 { max-width: 12ch; font-size: clamp(48px, 14vw, 76px); }
@@ -246,9 +260,8 @@ body[data-page="not-found"] .redirect-note a { color: var(--site-accent); }
   .ops-grid, .repo-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ops-card:nth-child(2), .repo-stat:nth-child(2) { border-right: 0; }
   .ops-card:nth-child(-n + 2), .repo-stat:nth-child(-n + 2) { border-bottom: 1px solid var(--site-rule); }
-  .spotlight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .spotlight-card, .spotlight-card:nth-child(3n + 1) { grid-column: span 1; min-height: 190px; }
-  .spotlight-card:first-child { grid-column: 1 / -1; }
+  .spotlight-grid { grid-template-columns: minmax(0, 1fr); }
+  .spotlight-card { min-height: 220px; }
   .ai-grid, .culture-grid, .favorite-grid, .fact-grid, .about-grid, .pulse-ladder, .contact-list { grid-template-columns: minmax(0, 1fr); }
   .quiz-layout, .console-layout, .github-layout, .terminal-layout, .spotlight-layout { grid-template-columns: minmax(0, 1fr); }
   body[data-page="about"] #identity-snapshot .about-grid, body[data-page="about"] #strengths .fact-grid, body[data-page="about"] #influence-stack .favorite-grid { grid-template-columns: minmax(0, 1fr); }
